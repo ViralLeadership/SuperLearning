@@ -6,8 +6,10 @@ unconfirmed_users = []
 confirmed_users = []
 still_alive_users = []
 
-# Verify each user, until there are no more unconfirmed users.
+# Verify each user, until there are no more potential users.
 #  Move each verified user into the list of confirmed users.
+#  Move each unconfirmed user into the list of unconfirmed users.
+#  Move users that are neither confirmed or unconfirmed into still alive users.
 while potential_users:
     for potential_user in potential_users:
         current_user = potential_users.pop()
@@ -29,7 +31,6 @@ print("\nThe following users are still unconfirmed:")
 for unconfirmed_user in sorted(unconfirmed_users):
     print(unconfirmed_user.title())
 
-    
 # Display all confirmed users.
 print("\nThe following users have been confirmed:")
 for confirmed_user in sorted(confirmed_users):
