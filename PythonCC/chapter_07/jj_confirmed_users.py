@@ -26,17 +26,17 @@ while potential_users:
                   current_user.title() + ".")
             still_alive_users.append(current_user)
         
-# Display all unconfirmed users.
+# Display all unconfirmed users in alphabetical order.
 print("\nThe following users are still unconfirmed:")
 for unconfirmed_user in sorted(unconfirmed_users):
     print(unconfirmed_user.title())
 
-# Display all confirmed users.
+# Display all confirmed users in alphabetical order.
 print("\nThe following users have been confirmed:")
 for confirmed_user in sorted(confirmed_users):
     print(confirmed_user.title())
 
-# Display user that are neither confirmed or unconfirmed.
+# Display user that are neither confirmed or unconfirmed in alphabetical order.
 print("\nThe following users are neither confirmed or unconfirmed:")
 for still_alive_user in sorted(still_alive_users):
     print(still_alive_user.title())
