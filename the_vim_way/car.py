@@ -40,7 +40,7 @@ class Car():
         else:
             print("You can't roll back an odometer!")
 
-my_new_car = Car("audi", "a8 awd", 2019)
+my_new_car = Car("hummer", "h3t", 2019)
 print("\n" + my_new_car.get_descriptive_name())
 my_new_car.update_odometer(15)
 my_new_car.read_odometer()
