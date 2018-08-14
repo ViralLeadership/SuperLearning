@@ -9,7 +9,7 @@ Created on Fri Aug 10 12:24:58 2018
 """
 Created on Fri Aug 10 11:15:05 2018
 
-@author: Jonathan
+@author: Jonathan Jenkins
 """
 
 class Car():
