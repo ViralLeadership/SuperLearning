@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{JJenkins\_HW \#2}
+    \title{Week 3 Notebook 2 - While loops data entry and error trapping}
     
     
     
@@ -280,313 +280,466 @@
     
 
     
-    \hypertarget{jjenkins-assignment-2}{%
-\section{JJenkins Assignment 2}\label{jjenkins-assignment-2}}
+    \hypertarget{while-loops-data-input-and-basic-error-trapping}{%
+\section{While Loops, Data Input and Basic Error
+Trapping}\label{while-loops-data-input-and-basic-error-trapping}}
 
-    \hypertarget{exercise-1-6-marks}{%
-\subsection{Exercise 1 (6 Marks)}\label{exercise-1-6-marks}}
+As you might guess, while loops are another form of looping. While (no
+pun intended) for loops have a definite beginning and end based on the
+parameters in the range() statement, while loops are based on
+conditionals much like if statements. As long as a specific condition is
+True, the while loop will continue looping. When the condition becomes
+False, the while loop ends. Here is a template for while loops:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# specify and set the initial condition to True}
+\NormalTok{running }\OperatorTok{=} \VariableTok{True}
+
+\CommentTok{# here is the while loop}
+\ControlFlowTok{while}\NormalTok{ running:}
+    \CommentTok{# do some stuff here}
+    \CommentTok{# and do some stuff here if needed}
+    \CommentTok{# at some point you would need}
+    \CommentTok{# to set running = False}
+    \CommentTok{# otherwise the loop will never end}
+    
+\CommentTok{# once the loop ends, the program continues here}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{itemize}
 \tightlist
 \item
-  Create a list with 10 string or name items and print the list
+  The while loop needs to start with a True condition
 \item
-  Remove the last 3 items from the list
+  The while statement itself contains the condition test
 \item
-  Append 3 new items to the list
+  As long as the condition remains True, the loop continues
 \item
-  Insert 1 new item between items 4 and 5
+  As soon as the condition changes to False, the loop ends
 \item
-  Change item 2 to something different
-\item
-  Take a slice from the list and print it
+  Once the loop ends, the program continues with the lines after the
+  loop
 \end{itemize}
 
-Remember to print each result. You can do all items in one Python cell
-if you want. Use remark (\#) statements to label each part of your
-solution. If you need to separate the output for neatness, you can
-insert an empty print() statement or use whitespace.
-
-Use the code cell below for your solution.
+One common error is to create a loop where the condition NEVER becomes
+False. In that event, the loop continues. We call this an infinite
+loop\ldots{} or as my math professor friend calls it (and my favorite
+expression), an eternal loop. You can usually break out of eternal loops
+by using Ctrl-C or clicking on a Stop button in Jupyter (the black
+square in the icon menu) or Cancel Build in Sublime Text or something
+similar.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{•Create a list with 10 string or name items and print the list•}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{my\PYZus{}furniture} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{couch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{chair}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{table}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{desk}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{stool}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bench}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bed}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hammock}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dresser}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ottoman}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{My list of 10 strings is the following list of furniture}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{my\PYZus{}furniture}\PY{p}{)}
-        \PY{k}{for} \PY{n}{piece} \PY{o+ow}{in} \PY{n}{my\PYZus{}furniture}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{piece}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} here is a countdown}
+        \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{10}
         
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{•Remove the last 3 items from the list•}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{last\PYZus{}3} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
-        \PY{k}{for} \PY{n}{index} \PY{o+ow}{in} \PY{n}{last\PYZus{}3}\PY{p}{:}
-            \PY{k}{del} \PY{n}{my\PYZus{}furniture}\PY{p}{[}\PY{n}{index}\PY{p}{]}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{There are }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ items of furniture after I remove the last 3 items for the list.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{My list of }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ items of furniture now includes the following:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{my\PYZus{}furniture}\PY{p}{)}
-        \PY{k}{for} \PY{n}{piece} \PY{o+ow}{in} \PY{n}{my\PYZus{}furniture}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{piece}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} while loop with condition count \PYZgt{} 0}
+        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{count}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} this is the decrement function}
+            \PY{n}{count} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
+            
+        \PY{c+c1}{\PYZsh{} this line prints after the loop is over, i.e. count = 0}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Blast Off!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+\end{Verbatim}
+
+
+    \hypertarget{counting-forwards-and-backwards}{%
+\subsubsection{Counting forwards and
+backwards}\label{counting-forwards-and-backwards}}
+
+I probably should not have used the variable count, but it seemed
+descriptive. Any variable will work!
+
+The count -= 1 statement subtracts 1 from the variable count each time
+the statement is executed. Counters are very useful in programming. You
+can count forward by 1 by using count += 1. You can count by any value,
+even non-integers if you wish. This method is not limited to addition
+and subtraction. You can also use * and / if you wish by using count *=
+(for example) or count /= 2.
+
+You can also count by using:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{count }\OperatorTok{=}\NormalTok{ count }\OperatorTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+This seems like an odd statement! How can count be equal to itself plus
+1? However, the = sign is the assignment symbol (the == is the logical
+equals). You read this statement from right to left. The value of the
+right side is assigned to the left side variable. Which count version is
+best? I think the += symbol is a bit more efficient, but it's your
+choice.
+
+    \hypertarget{try-it-yourself}{%
+\subsubsection{Try It Yourself}\label{try-it-yourself}}
+
+Let's have some fun. Copy the blastoff program into the code cell below.
+Then\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  Change the count -= 1 to count -= 0.1. Does the program still work?
+  What do you notice?
+\item
+  Change the count -= 1 to count *= 2. Be ready to click the square stop
+  button! Look at the output (scroll down if needed)
+\item
+  Change the count -= 1 to count /= 2. Let the program run. What is the
+  smallest value you see? After several decimal values, the remaining
+  numbers are in scientific notation. For example `1.23889e-26' is the
+  same as \[1.23889 \times 10^{-26}\] and 1.5678e+28 is the same as
+  \[1.5678 \times 10^{28}\]
+\end{itemize}
+
+    \hypertarget{input-data-from-the-keyboard-and-trapping-input-errors}{%
+\subsection{Input data from the keyboard and trapping input
+errors}\label{input-data-from-the-keyboard-and-trapping-input-errors}}
+
+There are times when you need some interaction with the user or
+customer. This is easy to accomplish by using the the input() statement.
+Here is an example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} have the user type in an integer between 1 and 10 inclusive}
+        \PY{n}{value} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please type in an integer between 1 and 10 inclusive }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{•Append 3 new items to the list•}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} adding 3 new items to my list}
-        \PY{n}{my\PYZus{}furniture}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coat rack}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{my\PYZus{}furniture}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hutch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{my\PYZus{}furniture}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{book case}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{My appended list of strings is the following }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{)}\PY{p}{)} 
-              \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ item list of furniture:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{my\PYZus{}furniture}\PY{p}{)}
-        \PY{k}{for} \PY{n}{piece} \PY{o+ow}{in} \PY{n}{my\PYZus{}furniture}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{piece}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print the value}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{You typed in }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    That's nice, but what prevents a user from typing in a value outside the
+specified range\ldots{} or from entering a floating point value? It's
+important to provide data entry error checking in all programs. Error
+checking helps prevent conditions such as dividing by zero (always a bad
+thing!) and other garbage input that can lead to garbage output. Let's
+give this concept a try\ldots{} maybe a while loop will help?
+
+Error trapping is an intermediate to advanced topic, but let's take a
+look. There are a couple of types of error trapping going on in the next
+program. First, the new keywords try: and except:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+    \ControlFlowTok{try}\NormalTok{:}
+        \CommentTok{# try out the python statement to see if it generates}
+        \CommentTok{# an error (or throws and exception... same thing)}
+    \ControlFlowTok{except}\NormalTok{:}
+        \CommentTok{# if the statement in the try: block causes an error or throws an exception}
+        \CommentTok{# instead of halting the program and showing the error, go to this block}
+        \CommentTok{# of code instead}
+\end{Highlighting}
+\end{Shaded}
+
+The try: and except: blocks are very useful for catching errors,
+particularly errors that may occur at random or in unexpected instances
+(such as accidently dividing by zero).
+
+The second error trap is the
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ value }\OperatorTok{>=} \DecValTok{1} \KeywordTok{and}\NormalTok{ value }\OperatorTok{<=} \DecValTok{10}\NormalTok{:}
+\end{Highlighting}
+\end{Shaded}
+
+statement in the try: block. If the first line in the try: block is OK,
+that means the value is an integer. We then can test to see if the
+integer is in the specified range.
+
+Try running the program several times and test the error trapping. The
+error trapping keeps the while loop working until the user types in the
+correct input.
+
+\hypertarget{note-if-the-program-seems-to-hang-or-does-not-accept-input-check-to-see-if-there-is-an-asterisk-in-the-bracket-next-to-the-in-preceding-the-code-block-something-like-in.-if-so-you-need-to-click-the-black-stop-button-or-select-the-kernel-menu-and-interrupt-or-any-of-the-restart-entries-most-likely-restart-clear-output-whatever-it-takes-to-clear-the-asterisk-and-return-control-back-to-you-so-you-can-run-the-program-again.}{%
+\paragraph{Note: If the program seems to hang or does not accept input,
+check to see if there is an asterisk in the bracket next to the In
+preceding the code block\ldots{} something like In{[}*{]}. If so, you
+need to click the black stop button or select the Kernel menu and
+Interrupt or any of the Restart entries (most likely Restart \& Clear
+Output)\ldots{} whatever it takes to clear the asterisk and return
+control back to you so you can run the program
+again.}\label{note-if-the-program-seems-to-hang-or-does-not-accept-input-check-to-see-if-there-is-an-asterisk-in-the-bracket-next-to-the-in-preceding-the-code-block-something-like-in.-if-so-you-need-to-click-the-black-stop-button-or-select-the-kernel-menu-and-interrupt-or-any-of-the-restart-entries-most-likely-restart-clear-output-whatever-it-takes-to-clear-the-asterisk-and-return-control-back-to-you-so-you-can-run-the-program-again.}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} here is the condition}
+        \PY{n}{key\PYZus{}in} \PY{o}{=} \PY{k+kc}{True}
         
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{•Insert 1 new item between items 4 and 5•}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{my\PYZus{}furniture}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pool table}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Inserting a new item between items 4 and 5, my }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{)}\PY{p}{)} 
-              \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ item list is now the following:}\PY{l+s+s2}{\PYZdq{}} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{my\PYZus{}furniture}\PY{p}{)}
-        \PY{k}{for} \PY{n}{piece} \PY{o+ow}{in} \PY{n}{my\PYZus{}furniture}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{piece}\PY{p}{)}
+        \PY{k}{while} \PY{n}{key\PYZus{}in}\PY{p}{:}
+            
+            \PY{c+c1}{\PYZsh{} trap input errors using try and except}
+            \PY{k}{try}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} this statement checks to make certain the entered data is an integer}
+                \PY{n}{value} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please type in an integer between 1 and 10 inclusive }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+                
+                \PY{c+c1}{\PYZsh{} at this point, we know we have an integer... but is it in the range?}
+                \PY{k}{if} \PY{n}{value} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{n}{value} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{10}\PY{p}{:}
+                    \PY{n}{key\PYZus{}in} \PY{o}{=} \PY{k+kc}{False}
+                \PY{k}{else}\PY{p}{:} 
+                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{No, you are out of the input range!  Try again...}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{except}\PY{p}{:}
+                \PY{c+c1}{\PYZsh{} if the try: statement is false, i.e. not an integer, then the except:}
+                \PY{c+c1}{\PYZsh{} block of code executes next.}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{No, you typed in a string or decimal value!  Try again...}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                  
+        \PY{c+c1}{\PYZsh{} print the value}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{You typed in }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Python normally assumes that a variable entered via input() is a string.
+We can convert an intended number to a value by the method used above.
+If we need a floating point value, we would replace the
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{value }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{input}\NormalTok{(}\StringTok{"Please type in an integer between 1 and 10 inclusive "}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{value }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(}\BuiltInTok{input}\NormalTok{(}\StringTok{"Please type in an integer between 1 and 10 inclusive "}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+We've used error trapping for keyboard input, but as previously stated,
+error trapping is useful in any situation where errors, whether input or
+programmed, might possibly occur.
+
+\hypertarget{using-a-while-loop-to-slice-strings}{%
+\subsubsection{Using a while loop to slice
+strings}\label{using-a-while-loop-to-slice-strings}}
+
+String variables can be considered as a list of characters. As such, we
+can slice strings just as we did with lists.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} enter a string}
+        \PY{n}{str\PYZus{}var} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Type in the name of your favorite city \PYZhy{} }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{•Change item 2 to something different•}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{my\PYZus{}furniture}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{curio cabinet}\PY{l+s+s1}{\PYZsq{}}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Changing item 2 to something different, my }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{)}\PY{p}{)} 
-              \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ item list is now the following:}\PY{l+s+s2}{\PYZdq{}} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{my\PYZus{}furniture}\PY{p}{)}
-        \PY{k}{for} \PY{n}{piece} \PY{o+ow}{in} \PY{n}{my\PYZus{}furniture}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{piece}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print the name one character at a time, but first, get the string length}
+        \PY{n}{length} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{)}
         
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{•Take a slice from the list and print it•}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{first\PYZus{}piece} \PY{o}{=} \PY{n}{my\PYZus{}furniture}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The first piece of furniture in my list is a }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{first\PYZus{}piece} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
-        \PY{n}{last\PYZus{}piece} \PY{o}{=} \PY{n}{my\PYZus{}furniture}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{last\PYZus{}piece}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The last piece of furniture in my list is a }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{last\PYZus{}piece} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The middle pieces of furniture in my list include: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{my\PYZus{}furniture}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} start counting with the 0 or first character}
+        \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
+        
+        \PY{c+c1}{\PYZsh{} print the individual letters in a column}
+        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZlt{}} \PY{n}{length}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{)}
+            \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                  
+        \PY{c+c1}{\PYZsh{} space}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                  
+        \PY{c+c1}{\PYZsh{} print the individual letters in a column in reverse}
+        
+        \PY{c+c1}{\PYZsh{} this looks a bit odd, but remember we start counting from 0}
+        \PY{c+c1}{\PYZsh{} so the last character is numbered one less than the length}
+        \PY{c+c1}{\PYZsh{} i.e. if the string is 6 characters long, the last position = 5}
+        
+        \PY{n}{count} \PY{o}{=} \PY{n}{length} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        
+        \PY{c+c1}{\PYZsh{} we\PYZsq{}ve got to to all the way to 0}
+        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{)}
+            \PY{n}{count} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
+                  
+        \PY{c+c1}{\PYZsh{} print the last two characters in the string}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The last two characters are }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{str\PYZus{}var}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} now print the name on a single line one character at a time}
+        
+        
+        \PY{c+c1}{\PYZsh{} start counting with the 0 or first character}
+        \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
+        
+        \PY{c+c1}{\PYZsh{} print the individual letters in a line}
+        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZlt{}} \PY{n}{length}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{,} \PY{n}{end} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+            
+        \PY{c+c1}{\PYZsh{} we\PYZsq{}ve stripped the newline from the end of the print statement with end = \PYZsq{}\PYZsq{}}
+        \PY{c+c1}{\PYZsh{} if we don\PYZsq{}t add an empty print statement or add a newline we\PYZsq{}ll keep}
+        \PY{c+c1}{\PYZsh{} printing on the same line.}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} and now reverse the letters in a line}
+        \PY{n}{count} \PY{o}{=} \PY{n}{length} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        
+        \PY{c+c1}{\PYZsh{} we\PYZsq{}ve got to to all the way to 0}
+        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{,} \PY{n}{end} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{count} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+
+    \hypertarget{try-it-yourself}{%
+\subsubsection{Try It Yourself}\label{try-it-yourself}}
+
+Now for a little challenge\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  Write a Python program that accepts string input from the keyboard.
+\item
+  Print the input, whether a single name or sentence, in reverse order
+  one letter at a time.
+\item
+  Have the program continue to accept input (looping) until the user
+  types `quit'.
+\item
+  No error trapping needed. Accept any input. You will see that numbers
+  work as well as letters.
+\end{itemize}
+
+    \hypertarget{more-functions}{%
+\subsubsection{More functions}\label{more-functions}}
+
+Let's write a function to determine whether or not an integer is prime.
+This script looks like a longer program and it is, but I've used a lot
+of remark statements to help me remember how the program was written and
+what I was thinking at the time.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} isprime function}
+        
+        \PY{k}{def} \PY{n+nf}{isprime}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            
+            \PY{c+c1}{\PYZsh{} prime acts as a flag to let us know if we have a prime or not}
+            \PY{c+c1}{\PYZsh{} we start out with prime = True}
+            
+            \PY{n}{prime} \PY{o}{=} \PY{k+kc}{True}
+            
+            \PY{c+c1}{\PYZsh{} we need to divide by all integers up to a certain point }
+            \PY{c+c1}{\PYZsh{} to see if any are divisors of our test value.  We know}
+            \PY{c+c1}{\PYZsh{} all numbers \PYZgt{} 2 can\PYZsq{}t be prime, so we start with 3 and}
+            \PY{c+c1}{\PYZsh{} then use odd numbers}
+            
+            \PY{n}{divisor} \PY{o}{=} \PY{l+m+mi}{3}
+            
+            \PY{c+c1}{\PYZsh{} we will check divisors up to one less than half the test value}
+            \PY{c+c1}{\PYZsh{} actually, we only need to check up to the square root of the}
+            \PY{c+c1}{\PYZsh{} test value... n**(1/2) Why?}
+            
+            \PY{k}{while} \PY{n}{divisor} \PY{o}{\PYZlt{}} \PY{p}{(}\PY{n}{n}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
+                
+                \PY{c+c1}{\PYZsh{} the \PYZpc{} is the modular or remainder division symbol}
+                \PY{c+c1}{\PYZsh{} it returns only the remainder in a division problem}
+                \PY{c+c1}{\PYZsh{} if the remainder == 0, then we have a divisor and the}
+                \PY{c+c1}{\PYZsh{} test value is NOT prime}
+                
+                \PY{k}{if} \PY{n}{n}\PY{o}{\PYZpc{}}\PY{k}{divisor} == 0:
+                    
+                    \PY{c+c1}{\PYZsh{} if we have a divisor, flag it by changing noprime to True}
+                    \PY{n}{prime} \PY{o}{=} \PY{k+kc}{False}
+                    
+                    \PY{c+c1}{\PYZsh{} get out of the while loop... we are done}
+                    \PY{k}{break}
+                    
+                \PY{k}{else}\PY{p}{:}
+                    \PY{c+c1}{\PYZsh{} add two to the divisor and try again.  Since we started with}
+                    \PY{c+c1}{\PYZsh{} 3, this statement runs through the odd numbers}
+                    \PY{n}{divisor} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{2}
+        
+            \PY{c+c1}{\PYZsh{} now the moment of truth. If we went through all of the potential divisors}
+            \PY{c+c1}{\PYZsh{} and did not change the value of prime from True to False, we have a prime number}
+            
+            \PY{k}{if} \PY{n}{prime} \PY{o}{==} \PY{k+kc}{True}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ is prime.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} and if we DID find a divisor, prime was changed to False}
+            \PY{c+c1}{\PYZsh{} and we\PYZsq{}ll print accordingly}
+            
+            \PY{k}{else}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ is composite.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+        
+        \PY{c+c1}{\PYZsh{} test value }
+            
+        \PY{n}{isprime}\PY{p}{(}\PY{l+m+mi}{45587}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-•Create a list with 10 string or name items and print the list•
-
-My list of 10 strings is the following list of furniture ['couch', 'chair', 'table', 'desk', 'stool', 'bench', 'bed', 'hammock', 'dresser', 'ottoman']
-couch
-chair
-table
-desk
-stool
-bench
-bed
-hammock
-dresser
-ottoman
-
-•Remove the last 3 items from the list•
-
-There are 7 items of furniture after I remove the last 3 items for the list.
-My list of 7 items of furniture now includes the following:
- ['couch', 'chair', 'table', 'desk', 'stool', 'bench', 'bed']
-couch
-chair
-table
-desk
-stool
-bench
-bed
-
-•Append 3 new items to the list•
-
-My appended list of strings is the following 10 item list of furniture:
- ['couch', 'chair', 'table', 'desk', 'stool', 'bench', 'bed', 'coat rack', 'hutch', 'book case']
-couch
-chair
-table
-desk
-stool
-bench
-bed
-coat rack
-hutch
-book case
-
-•Insert 1 new item between items 4 and 5•
-Inserting a new item between items 4 and 5, my 11 item list is now the following:
- ['couch', 'chair', 'table', 'desk', 'pool table', 'stool', 'bench', 'bed', 'coat rack', 'hutch', 'book case']
-couch
-chair
-table
-desk
-pool table
-stool
-bench
-bed
-coat rack
-hutch
-book case
-
-•Change item 2 to something different•
-Changing item 2 to something different, my 11 item list is now the following:
- ['couch', 'curio cabinet', 'table', 'desk', 'pool table', 'stool', 'bench', 'bed', 'coat rack', 'hutch', 'book case']
-couch
-curio cabinet
-table
-desk
-pool table
-stool
-bench
-bed
-coat rack
-hutch
-book case
-
-•Take a slice from the list and print it•
-couch
-The first piece of furniture in my list is a couch.
-
-book case
-The last piece of furniture in my list is a book case.
-
-The middle pieces of furniture in my list include: 
-['curio cabinet', 'table', 'desk', 'pool table', 'stool', 'bench', 'bed', 'coat rack', 'hutch']
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} try your own test value here}
+\end{Verbatim}
 
 
-    \end{Verbatim}
+    Note: We can use the \% (mod or remainder division) to determine whether
+or not a number is even or odd. Here is an example code block for that
+purpose:
 
-    \hypertarget{exercise-2-3-marks}{%
-\subsection{Exercise 2 (3 Marks)}\label{exercise-2-3-marks}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# assume the variable n is some integer}
+\ControlFlowTok{if}\NormalTok{ n}\OperatorTok{%}\DecValTok{2} \OperatorTok{==} \DecValTok{0}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{'even'}\NormalTok{)}
+\ControlFlowTok{else}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{'odd'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Write a program that calculates and prints the first 50 powers of 2
-minus 1. Instead of using n**2, you will need the following function
-(which we used earlier in the course):
-
-2**n - 1
-
-Hint: Use the squares program in Notebook 2 as a model.
-
-Use the code cell below for your solution.
+Now let's write a square root function. I know Python can do this on its
+own, but perhaps we can put one together using what we've already
+learned. The following algorithm (computer code that performs a series
+of calculations) is based on Newton's method. It is several hundred
+years old (Newton's method, not the code), but is still useful.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} setting my n to zero and creating a variable for my exponent}
-        \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{0}
-        \PY{n}{exponent} \PY{o}{=} \PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} define a square root function using Newton\PYZsq{}s method}
+        \PY{c+c1}{\PYZsh{} you can look this up online for a better explanation}
         
-        \PY{c+c1}{\PYZsh{} using a while loop to to loop through my counts of n from 0 to 50}
-        \PY{k}{while} \PY{n}{n} \PY{o}{\PYZlt{}} \PY{l+m+mi}{51}\PY{p}{:}
-            \PY{c+c1}{\PYZsh{} calculating 2 to the power of (n\PYZhy{}1) for each count of n from 0 to 50}
-            \PY{n}{pwrs\PYZus{}of\PYZus{}2minus1} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{n}{exponent}
-            \PY{c+c1}{\PYZsh{} printing out the value of 2 to the power of (n\PYZhy{}1) for each count of n}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{2 to the power of (}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ minus 1), also written as 2\PYZca{}(}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}1) is equal to }\PY{l+s+s2}{\PYZdq{}} 
-                  \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{2\PYZca{}(}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{exponent}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{) and has a value of }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{pwrs\PYZus{}of\PYZus{}2minus1}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            \PY{c+c1}{\PYZsh{} incrementing my count for this loop iteration to be passed to the next iteration}
-            \PY{n}{n} \PY{o}{=} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}
-            \PY{c+c1}{\PYZsh{} incrementing my exponent to be passed to the next iteration}
-            \PY{n}{exponent} \PY{o}{=} \PY{n}{n} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+        \PY{k}{def} \PY{n+nf}{sqr}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+            
+            \PY{c+c1}{\PYZsh{} start with a guess of 0.5*n or 1/2 of the number}
+            \PY{n}{guess} \PY{o}{=} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{n}{n}
+            
+            \PY{c+c1}{\PYZsh{} make a better guess by taking the average of}
+            \PY{c+c1}{\PYZsh{} the guess and the number divided by the guess}
+            \PY{n}{better} \PY{o}{=} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{p}{(}\PY{n}{guess} \PY{o}{+} \PY{n}{n}\PY{o}{/}\PY{n}{guess}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} as long as the guess and the better value are}
+            \PY{c+c1}{\PYZsh{} different (not equal or !=), keep on working}
+            \PY{k}{while} \PY{n}{better} \PY{o}{!=} \PY{n}{guess}\PY{p}{:}
+                
+                \PY{c+c1}{\PYZsh{} replace guess with the better value and try again}
+                \PY{n}{guess} \PY{o}{=} \PY{n}{better}
+                
+                \PY{c+c1}{\PYZsh{} make a better guess by taking the average of}
+                \PY{c+c1}{\PYZsh{} guess and the number divided by guess}
+                \PY{n}{better} \PY{o}{=} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{p}{(}\PY{n}{guess} \PY{o}{+} \PY{n}{n}\PY{o}{/}\PY{n}{guess}\PY{p}{)}
+                
+            \PY{k}{return} \PY{n}{guess}
+        
+        \PY{c+c1}{\PYZsh{} test}
+        \PY{n}{sqr}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+            
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-2 to the power of (0 minus 1), also written as 2\^{}(0-1) is equal to 2\^{}(-1) and has a value of 0.5.
-2 to the power of (1 minus 1), also written as 2\^{}(1-1) is equal to 2\^{}(0) and has a value of 1.
-2 to the power of (2 minus 1), also written as 2\^{}(2-1) is equal to 2\^{}(1) and has a value of 2.
-2 to the power of (3 minus 1), also written as 2\^{}(3-1) is equal to 2\^{}(2) and has a value of 4.
-2 to the power of (4 minus 1), also written as 2\^{}(4-1) is equal to 2\^{}(3) and has a value of 8.
-2 to the power of (5 minus 1), also written as 2\^{}(5-1) is equal to 2\^{}(4) and has a value of 16.
-2 to the power of (6 minus 1), also written as 2\^{}(6-1) is equal to 2\^{}(5) and has a value of 32.
-2 to the power of (7 minus 1), also written as 2\^{}(7-1) is equal to 2\^{}(6) and has a value of 64.
-2 to the power of (8 minus 1), also written as 2\^{}(8-1) is equal to 2\^{}(7) and has a value of 128.
-2 to the power of (9 minus 1), also written as 2\^{}(9-1) is equal to 2\^{}(8) and has a value of 256.
-2 to the power of (10 minus 1), also written as 2\^{}(10-1) is equal to 2\^{}(9) and has a value of 512.
-2 to the power of (11 minus 1), also written as 2\^{}(11-1) is equal to 2\^{}(10) and has a value of 1024.
-2 to the power of (12 minus 1), also written as 2\^{}(12-1) is equal to 2\^{}(11) and has a value of 2048.
-2 to the power of (13 minus 1), also written as 2\^{}(13-1) is equal to 2\^{}(12) and has a value of 4096.
-2 to the power of (14 minus 1), also written as 2\^{}(14-1) is equal to 2\^{}(13) and has a value of 8192.
-2 to the power of (15 minus 1), also written as 2\^{}(15-1) is equal to 2\^{}(14) and has a value of 16384.
-2 to the power of (16 minus 1), also written as 2\^{}(16-1) is equal to 2\^{}(15) and has a value of 32768.
-2 to the power of (17 minus 1), also written as 2\^{}(17-1) is equal to 2\^{}(16) and has a value of 65536.
-2 to the power of (18 minus 1), also written as 2\^{}(18-1) is equal to 2\^{}(17) and has a value of 131072.
-2 to the power of (19 minus 1), also written as 2\^{}(19-1) is equal to 2\^{}(18) and has a value of 262144.
-2 to the power of (20 minus 1), also written as 2\^{}(20-1) is equal to 2\^{}(19) and has a value of 524288.
-2 to the power of (21 minus 1), also written as 2\^{}(21-1) is equal to 2\^{}(20) and has a value of 1048576.
-2 to the power of (22 minus 1), also written as 2\^{}(22-1) is equal to 2\^{}(21) and has a value of 2097152.
-2 to the power of (23 minus 1), also written as 2\^{}(23-1) is equal to 2\^{}(22) and has a value of 4194304.
-2 to the power of (24 minus 1), also written as 2\^{}(24-1) is equal to 2\^{}(23) and has a value of 8388608.
-2 to the power of (25 minus 1), also written as 2\^{}(25-1) is equal to 2\^{}(24) and has a value of 16777216.
-2 to the power of (26 minus 1), also written as 2\^{}(26-1) is equal to 2\^{}(25) and has a value of 33554432.
-2 to the power of (27 minus 1), also written as 2\^{}(27-1) is equal to 2\^{}(26) and has a value of 67108864.
-2 to the power of (28 minus 1), also written as 2\^{}(28-1) is equal to 2\^{}(27) and has a value of 134217728.
-2 to the power of (29 minus 1), also written as 2\^{}(29-1) is equal to 2\^{}(28) and has a value of 268435456.
-2 to the power of (30 minus 1), also written as 2\^{}(30-1) is equal to 2\^{}(29) and has a value of 536870912.
-2 to the power of (31 minus 1), also written as 2\^{}(31-1) is equal to 2\^{}(30) and has a value of 1073741824.
-2 to the power of (32 minus 1), also written as 2\^{}(32-1) is equal to 2\^{}(31) and has a value of 2147483648.
-2 to the power of (33 minus 1), also written as 2\^{}(33-1) is equal to 2\^{}(32) and has a value of 4294967296.
-2 to the power of (34 minus 1), also written as 2\^{}(34-1) is equal to 2\^{}(33) and has a value of 8589934592.
-2 to the power of (35 minus 1), also written as 2\^{}(35-1) is equal to 2\^{}(34) and has a value of 17179869184.
-2 to the power of (36 minus 1), also written as 2\^{}(36-1) is equal to 2\^{}(35) and has a value of 34359738368.
-2 to the power of (37 minus 1), also written as 2\^{}(37-1) is equal to 2\^{}(36) and has a value of 68719476736.
-2 to the power of (38 minus 1), also written as 2\^{}(38-1) is equal to 2\^{}(37) and has a value of 137438953472.
-2 to the power of (39 minus 1), also written as 2\^{}(39-1) is equal to 2\^{}(38) and has a value of 274877906944.
-2 to the power of (40 minus 1), also written as 2\^{}(40-1) is equal to 2\^{}(39) and has a value of 549755813888.
-2 to the power of (41 minus 1), also written as 2\^{}(41-1) is equal to 2\^{}(40) and has a value of 1099511627776.
-2 to the power of (42 minus 1), also written as 2\^{}(42-1) is equal to 2\^{}(41) and has a value of 2199023255552.
-2 to the power of (43 minus 1), also written as 2\^{}(43-1) is equal to 2\^{}(42) and has a value of 4398046511104.
-2 to the power of (44 minus 1), also written as 2\^{}(44-1) is equal to 2\^{}(43) and has a value of 8796093022208.
-2 to the power of (45 minus 1), also written as 2\^{}(45-1) is equal to 2\^{}(44) and has a value of 17592186044416.
-2 to the power of (46 minus 1), also written as 2\^{}(46-1) is equal to 2\^{}(45) and has a value of 35184372088832.
-2 to the power of (47 minus 1), also written as 2\^{}(47-1) is equal to 2\^{}(46) and has a value of 70368744177664.
-2 to the power of (48 minus 1), also written as 2\^{}(48-1) is equal to 2\^{}(47) and has a value of 140737488355328.
-2 to the power of (49 minus 1), also written as 2\^{}(49-1) is equal to 2\^{}(48) and has a value of 281474976710656.
-2 to the power of (50 minus 1), also written as 2\^{}(50-1) is equal to 2\^{}(49) and has a value of 562949953421312.
-
-    \end{Verbatim}
-
-    \hypertarget{exercise-3-6-marks}{%
-\subsection{Exercise 3 (6 Marks)}\label{exercise-3-6-marks}}
-
-Write a program that finds the sum of the first 1000 even integers. Not
-the evens from 1 to 1000, but the first \textbf{1000} even integers.
-Also calculate the average of the 1000 even integers. Print the length
-of the list, the sum of the list, the average of the list and the last 5
-even numbers in the list.
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} creating an empty list for my even integers and initializing my count of even integers}
-        \PY{n}{even\PYZus{}integers} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-        \PY{n}{even\PYZus{}integers\PYZus{}count} \PY{o}{=} \PY{l+m+mi}{0}
-        
-        \PY{c+c1}{\PYZsh{} using a while loop that will run until my list of even integers contains 1000 items}
-        \PY{k}{while} \PY{n+nb}{len}\PY{p}{(}\PY{n}{even\PYZus{}integers}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{999}\PY{p}{:}
-            \PY{c+c1}{\PYZsh{} using an if statement to check whether the current integer is even or not}
-            \PY{k}{if} \PY{n}{even\PYZus{}integers\PYZus{}count} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
-                \PY{c+c1}{\PYZsh{} appending even integers to my list}
-                \PY{n}{even\PYZus{}integers}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{even\PYZus{}integers\PYZus{}count}\PY{p}{)}
-            \PY{c+c1}{\PYZsh{} incrementing my while loop to the next integer}
-            \PY{n}{even\PYZus{}integers\PYZus{}count} \PY{o}{=} \PY{n}{even\PYZus{}integers\PYZus{}count} \PY{o}{+} \PY{l+m+mi}{1}
-        
-        
-        \PY{c+c1}{\PYZsh{} printing the length of the list of even integers}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The length of the list of even integers is }\PY{l+s+si}{\PYZob{}0:,g\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{even\PYZus{}integers}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} calculating the sum of my list of even integers and printing out the sum.}
-        \PY{n}{sum\PYZus{}even\PYZus{}integers} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{even\PYZus{}integers}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the first }\PY{l+s+si}{\PYZob{}0:,g\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{even\PYZus{}integers}\PY{p}{)}\PY{p}{)} 
-              \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ even integers is equal to }\PY{l+s+si}{\PYZob{}0:,g\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{sum\PYZus{}even\PYZus{}integers}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} calculating the average of my list of even integers and printing out the average.}
-        \PY{n}{avg\PYZus{}even\PYZus{}integers} \PY{o}{=} \PY{n}{sum\PYZus{}even\PYZus{}integers} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{even\PYZus{}integers}\PY{p}{)}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The average of the first }\PY{l+s+si}{\PYZob{}0:,g\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{even\PYZus{}integers}\PY{p}{)}\PY{p}{)} 
-              \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ even integers is equal to }\PY{l+s+si}{\PYZob{}0:,g\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{avg\PYZus{}even\PYZus{}integers}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} printing out the last 5 numbers in the list}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The last five numbers in the list are: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{even\PYZus{}integers}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{:}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} try your own test values here}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-The length of the list of even integers is 1,000.
-
-The sum of the first 1,000 even integers is equal to 999,000.
-
-The average of the first 1,000 even integers is equal to 999.
-
-The last five numbers in the list are:  [1990, 1992, 1994, 1996, 1998]
-
-    \end{Verbatim}
+    \hypertarget{go-to-assignment-3}{%
+\subsubsection{Go to Assignment 3}\label{go-to-assignment-3}}
 
 
     % Add a bibliography block to the postdoc
