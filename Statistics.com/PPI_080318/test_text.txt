@@ -1,0 +1,4 @@
+Hello World... again!
+The name of the open file
+is stored in the newfile variable.
+This is the last line (so far).
