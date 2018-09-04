@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{Week 3 Notebook 2 - While loops data entry and error trapping}
+    \title{JJenkins\_HW\#4}
     
     
     
@@ -280,467 +280,532 @@
     
 
     
-    \hypertarget{while-loops-data-input-and-basic-error-trapping}{%
-\section{While Loops, Data Input and Basic Error
-Trapping}\label{while-loops-data-input-and-basic-error-trapping}}
+    \hypertarget{assignment-4}{%
+\section{Assignment 4}\label{assignment-4}}
 
-As you might guess, while loops are another form of looping. While (no
-pun intended) for loops have a definite beginning and end based on the
-parameters in the range() statement, while loops are based on
-conditionals much like if statements. As long as a specific condition is
-True, the while loop will continue looping. When the condition becomes
-False, the while loop ends. Here is a template for while loops:
+\hypertarget{marks}{%
+\subsubsection{(12 Marks)}\label{marks}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# specify and set the initial condition to True}
-\NormalTok{running }\OperatorTok{=} \VariableTok{True}
+If you have not already done so, download the following csv file:
 
-\CommentTok{# here is the while loop}
-\ControlFlowTok{while}\NormalTok{ running:}
-    \CommentTok{# do some stuff here}
-    \CommentTok{# and do some stuff here if needed}
-    \CommentTok{# at some point you would need}
-    \CommentTok{# to set running = False}
-    \CommentTok{# otherwise the loop will never end}
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.dropbox.com/s/br6p2brp54cjpla/tips.csv?dl=1}{tips.csv}
+\end{itemize}
+
+Using the tips.csv file, pandas and matplotlib (pyplot), complete the
+following exercises:
+
+(assume total\_bill is the cost of the meal without the tip and assume
+the values are in US dollars)
+
+\begin{itemize}
+\tightlist
+\item
+  Show the file info
+\item
+  Display the first 5 rows of the file
+\item
+  Display the last 5 rows of the file
+\item
+  Display the minimum and maximum tips
+\item
+  Display the minimum and maximum meal cost
+\item
+  Display the average tip
+\item
+  Display the average meal cost
+\item
+  Create a new column that displays the total cost (total\_cost) of each
+  meal (total\_bill + tip) and find the average total\_cost of the meals
+\item
+  On average, who tips more in this data set, males or females?
+\end{itemize}
+
+With matplotlib, display the following graphs
+
+\begin{itemize}
+\tightlist
+\item
+  Display a scatterplot of total\_bill (x-axis) vs.~tip (y-axis), label
+  the axes and add a title
+\item
+  Display a box plot of the tips
+\item
+  Display a histogram of female tip amounts, label the x-axis
+\item
+  Display a histogram of male tip amounts, label the x-axis
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{Using the tips.csv file, pandas and matplotlib (pyplot), complete the}
+        \PY{l+s+sd}{following exercises:}
+        \PY{l+s+sd}{(assume total\PYZus{}bill is the cost of the meal without the tip and assume}
+        \PY{l+s+sd}{the values are in US dollars)}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} import pandas for data analysis and matplotlib for plotting}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        
+        \PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tips.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Show the file info}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The file info for data is as follows: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} 
+        \PY{n}{data}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the first 5 rows of the file}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The first 5 rows of the file are: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the last 5 rows of the file}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The last 5 rows of the file are: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the minimum and maximum tips}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The minimum tip was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The maximum tip was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the minimum and maximum meal cost}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The minimum meal cost was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The maximum meal cost was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the average tip}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The average tip was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the average meal cost}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The average meal cost was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Create a new column that displays the total cost (total\PYZus{}cost) of each meal (total\PYZus{}bill + tip) and find the average total\PYZus{}cost of the meals}
+        \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}cost}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{+} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{With the new column showing total cost, the first 5 rows }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} 
+              \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{of the file are: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}On average, who tips more in this data set, males or females?}
+        \PY{c+c1}{\PYZsh{}data[data.sex = \PYZdq{}Female\PYZdq{}]}
+        \PY{n}{females} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Female}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{males} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Male}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{In this data set the average female tip is \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{females}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{In this data set the average male tip is \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{males}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{k}{if} \PY{n}{females}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{males}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{On average in this data set females tip more than males.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{On average, in this data set, males tip more than females.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The file info for data is as follows: 
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 244 entries, 0 to 243
+Data columns (total 7 columns):
+total\_bill    244 non-null float64
+tip           244 non-null float64
+sex           244 non-null object
+smoker        244 non-null object
+day           244 non-null object
+time          244 non-null object
+size          244 non-null int64
+dtypes: float64(2), int64(1), object(4)
+memory usage: 13.4+ KB
+
+The first 5 rows of the file are: 
+
+    total\_bill   tip     sex smoker  day    time  size
+0       16.99  1.01  Female     No  Sun  Dinner     2
+1       10.34  1.66    Male     No  Sun  Dinner     3
+2       21.01  3.50    Male     No  Sun  Dinner     3
+3       23.68  3.31    Male     No  Sun  Dinner     2
+4       24.59  3.61  Female     No  Sun  Dinner     4
+
+The last 5 rows of the file are: 
+
+      total\_bill   tip     sex smoker   day    time  size
+239       29.03  5.92    Male     No   Sat  Dinner     3
+240       27.18  2.00  Female    Yes   Sat  Dinner     2
+241       22.67  2.00    Male    Yes   Sat  Dinner     2
+242       17.82  1.75    Male     No   Sat  Dinner     2
+243       18.78  3.00  Female     No  Thur  Dinner     2
+
+The minimum tip was \$1.00.
+The maximum tip was \$10.00.
+
+
+The minimum meal cost was \$3.07.
+The maximum meal cost was \$50.81.
+
+The average tip was \$3.00.
+
+The average meal cost was \$19.79.
+
+With the new column showing total cost, the first 5 rows of the file are: 
+    total\_bill   tip     sex smoker  day    time  size  total\_cost
+0       16.99  1.01  Female     No  Sun  Dinner     2       18.00
+1       10.34  1.66    Male     No  Sun  Dinner     3       12.00
+2       21.01  3.50    Male     No  Sun  Dinner     3       24.51
+3       23.68  3.31    Male     No  Sun  Dinner     2       26.99
+4       24.59  3.61  Female     No  Sun  Dinner     4       28.20
+
+In this data set the average female tip is \$2.83.
+In this data set the average male tip is \$3.09
+On average, in this data set, males tip more than females.
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{}With matplotlib, display the following graphs}
+        \PY{c+c1}{\PYZsh{}Display a scatterplot of total\PYZus{}bill (x\PYZhy{}axis) vs. tip (y\PYZhy{}axis), label the axes and add a title}
+        \PY{n}{x} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{y} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} axis labels and graph title}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tip}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Scatter Plot: }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{Total Bill vs. Tip}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} render the scatter plot}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display a box plot of the tips}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tip}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tips}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display a histogram of female tip amounts, label the x\PYZhy{}axis}
+        \PY{n}{females} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Female}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{females}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Female Tip Amounts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display a histogram of male tip amounts, label the x\PYZhy{}axis}
+        \PY{n}{males} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Male}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{males}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Male Tip Amounts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
     
-\CommentTok{# once the loop ends, the program continues here}
-\end{Highlighting}
-\end{Shaded}
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Go to the matplotlib website and copy the code from an example
+plot\ldots{} any example plot that looks interesting or pleasing to you.
+There is no other requirement for this exercise.
 
-\begin{itemize}
-\tightlist
-\item
-  The while loop needs to start with a True condition
-\item
-  The while statement itself contains the condition test
-\item
-  As long as the condition remains True, the loop continues
-\item
-  As soon as the condition changes to False, the loop ends
-\item
-  Once the loop ends, the program continues with the lines after the
-  loop
-\end{itemize}
-
-One common error is to create a loop where the condition NEVER becomes
-False. In that event, the loop continues. We call this an infinite
-loop\ldots{} or as my math professor friend calls it (and my favorite
-expression), an eternal loop. You can usually break out of eternal loops
-by using Ctrl-C or clicking on a Stop button in Jupyter (the black
-square in the icon menu) or Cancel Build in Sublime Text or something
-similar.
+Paste the code in the cell below and display the graph. Yes, this is
+easy and somewhat trivial\ldots{} but I want to be dazzled by something
+neat :-)
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} here is a countdown}
-        \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{10}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{=========================}
+        \PY{l+s+sd}{Hatch\PYZhy{}filled histograms}
+        \PY{l+s+sd}{=========================}
         
-        \PY{c+c1}{\PYZsh{} while loop with condition count \PYZgt{} 0}
-        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{count}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{} this is the decrement function}
-            \PY{n}{count} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
-            
-        \PY{c+c1}{\PYZsh{} this line prints after the loop is over, i.e. count = 0}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Blast Off!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-\end{Verbatim}
-
-
-    \hypertarget{counting-forwards-and-backwards}{%
-\subsubsection{Counting forwards and
-backwards}\label{counting-forwards-and-backwards}}
-
-I probably should not have used the variable count, but it seemed
-descriptive. Any variable will work!
-
-The count -= 1 statement subtracts 1 from the variable count each time
-the statement is executed. Counters are very useful in programming. You
-can count forward by 1 by using count += 1. You can count by any value,
-even non-integers if you wish. This method is not limited to addition
-and subtraction. You can also use * and / if you wish by using count *=
-(for example) or count /= 2.
-
-You can also count by using:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{count }\OperatorTok{=}\NormalTok{ count }\OperatorTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-This seems like an odd statement! How can count be equal to itself plus
-1? However, the = sign is the assignment symbol (the == is the logical
-equals). You read this statement from right to left. The value of the
-right side is assigned to the left side variable. Which count version is
-best? I think the += symbol is a bit more efficient, but it's your
-choice.
-
-    \hypertarget{try-it-yourself}{%
-\subsubsection{Try It Yourself}\label{try-it-yourself}}
-
-Let's have some fun. Copy the blastoff program into the code cell below.
-Then\ldots{}
-
-\begin{itemize}
-\tightlist
-\item
-  Change the count -= 1 to count -= 0.1. Does the program still work?
-  What do you notice?
-\item
-  Change the count -= 1 to count *= 2. Be ready to click the square stop
-  button! Look at the output (scroll down if needed)
-\item
-  Change the count -= 1 to count /= 2. Let the program run. What is the
-  smallest value you see? After several decimal values, the remaining
-  numbers are in scientific notation. For example `1.23889e-26' is the
-  same as \[1.23889 \times 10^{-26}\] and 1.5678e+28 is the same as
-  \[1.5678 \times 10^{28}\]
-\end{itemize}
-
-    \hypertarget{input-data-from-the-keyboard-and-trapping-input-errors}{%
-\subsection{Input data from the keyboard and trapping input
-errors}\label{input-data-from-the-keyboard-and-trapping-input-errors}}
-
-There are times when you need some interaction with the user or
-customer. This is easy to accomplish by using the the input() statement.
-Here is an example:
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} have the user type in an integer between 1 and 10 inclusive}
-        \PY{n}{value} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please type in an integer between 1 and 10 inclusive }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{l+s+sd}{This example showcases the hatching capabilities of matplotlib by plotting}
+        \PY{l+s+sd}{various histograms.}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
         
-        \PY{c+c1}{\PYZsh{} print the value}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{You typed in }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-    That's nice, but what prevents a user from typing in a value outside the
-specified range\ldots{} or from entering a floating point value? It's
-important to provide data entry error checking in all programs. Error
-checking helps prevent conditions such as dividing by zero (always a bad
-thing!) and other garbage input that can lead to garbage output. Let's
-give this concept a try\ldots{} maybe a while loop will help?
-
-Error trapping is an intermediate to advanced topic, but let's take a
-look. There are a couple of types of error trapping going on in the next
-program. First, the new keywords try: and except:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-
-    \ControlFlowTok{try}\NormalTok{:}
-        \CommentTok{# try out the python statement to see if it generates}
-        \CommentTok{# an error (or throws and exception... same thing)}
-    \ControlFlowTok{except}\NormalTok{:}
-        \CommentTok{# if the statement in the try: block causes an error or throws an exception}
-        \CommentTok{# instead of halting the program and showing the error, go to this block}
-        \CommentTok{# of code instead}
-\end{Highlighting}
-\end{Shaded}
-
-The try: and except: blocks are very useful for catching errors,
-particularly errors that may occur at random or in unexpected instances
-(such as accidently dividing by zero).
-
-The second error trap is the
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ value }\OperatorTok{>=} \DecValTok{1} \KeywordTok{and}\NormalTok{ value }\OperatorTok{<=} \DecValTok{10}\NormalTok{:}
-\end{Highlighting}
-\end{Shaded}
-
-statement in the try: block. If the first line in the try: block is OK,
-that means the value is an integer. We then can test to see if the
-integer is in the specified range.
-
-Try running the program several times and test the error trapping. The
-error trapping keeps the while loop working until the user types in the
-correct input.
-
-\hypertarget{note-if-the-program-seems-to-hang-or-does-not-accept-input-check-to-see-if-there-is-an-asterisk-in-the-bracket-next-to-the-in-preceding-the-code-block-something-like-in.-if-so-you-need-to-click-the-black-stop-button-or-select-the-kernel-menu-and-interrupt-or-any-of-the-restart-entries-most-likely-restart-clear-output-whatever-it-takes-to-clear-the-asterisk-and-return-control-back-to-you-so-you-can-run-the-program-again.}{%
-\paragraph{Note: If the program seems to hang or does not accept input,
-check to see if there is an asterisk in the bracket next to the In
-preceding the code block\ldots{} something like In{[}*{]}. If so, you
-need to click the black stop button or select the Kernel menu and
-Interrupt or any of the Restart entries (most likely Restart \& Clear
-Output)\ldots{} whatever it takes to clear the asterisk and return
-control back to you so you can run the program
-again.}\label{note-if-the-program-seems-to-hang-or-does-not-accept-input-check-to-see-if-there-is-an-asterisk-in-the-bracket-next-to-the-in-preceding-the-code-block-something-like-in.-if-so-you-need-to-click-the-black-stop-button-or-select-the-kernel-menu-and-interrupt-or-any-of-the-restart-entries-most-likely-restart-clear-output-whatever-it-takes-to-clear-the-asterisk-and-return-control-back-to-you-so-you-can-run-the-program-again.}}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} here is the condition}
-        \PY{n}{key\PYZus{}in} \PY{o}{=} \PY{k+kc}{True}
+        \PY{k+kn}{import} \PY{n+nn}{itertools}
+        \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{OrderedDict}
+        \PY{k+kn}{from} \PY{n+nn}{functools} \PY{k}{import} \PY{n}{partial}
         
-        \PY{k}{while} \PY{n}{key\PYZus{}in}\PY{p}{:}
-            
-            \PY{c+c1}{\PYZsh{} trap input errors using try and except}
-            \PY{k}{try}\PY{p}{:}
-                \PY{c+c1}{\PYZsh{} this statement checks to make certain the entered data is an integer}
-                \PY{n}{value} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please type in an integer between 1 and 10 inclusive }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
-                
-                \PY{c+c1}{\PYZsh{} at this point, we know we have an integer... but is it in the range?}
-                \PY{k}{if} \PY{n}{value} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{1} \PY{o+ow}{and} \PY{n}{value} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{10}\PY{p}{:}
-                    \PY{n}{key\PYZus{}in} \PY{o}{=} \PY{k+kc}{False}
-                \PY{k}{else}\PY{p}{:} 
-                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{No, you are out of the input range!  Try again...}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            \PY{k}{except}\PY{p}{:}
-                \PY{c+c1}{\PYZsh{} if the try: statement is false, i.e. not an integer, then the except:}
-                \PY{c+c1}{\PYZsh{} block of code executes next.}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{No, you typed in a string or decimal value!  Try again...}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                  
-        \PY{c+c1}{\PYZsh{} print the value}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{You typed in }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-    Python normally assumes that a variable entered via input() is a string.
-We can convert an intended number to a value by the method used above.
-If we need a floating point value, we would replace the
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{value }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(}\BuiltInTok{input}\NormalTok{(}\StringTok{"Please type in an integer between 1 and 10 inclusive "}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-with
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{value }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(}\BuiltInTok{input}\NormalTok{(}\StringTok{"Please type in an integer between 1 and 10 inclusive "}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-We've used error trapping for keyboard input, but as previously stated,
-error trapping is useful in any situation where errors, whether input or
-programmed, might possibly occur.
-
-\hypertarget{using-a-while-loop-to-slice-strings}{%
-\subsubsection{Using a while loop to slice
-strings}\label{using-a-while-loop-to-slice-strings}}
-
-String variables can be considered as a list of characters. As such, we
-can slice strings just as we did with lists.
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} enter a string}
-        \PY{n}{str\PYZus{}var} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Type in the name of your favorite city \PYZhy{} }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} print the name one character at a time, but first, get the string length}
-        \PY{n}{length} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} start counting with the 0 or first character}
-        \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
-        
-        \PY{c+c1}{\PYZsh{} print the individual letters in a column}
-        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZlt{}} \PY{n}{length}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{)}
-            \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-                  
-        \PY{c+c1}{\PYZsh{} space}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-                  
-        \PY{c+c1}{\PYZsh{} print the individual letters in a column in reverse}
-        
-        \PY{c+c1}{\PYZsh{} this looks a bit odd, but remember we start counting from 0}
-        \PY{c+c1}{\PYZsh{} so the last character is numbered one less than the length}
-        \PY{c+c1}{\PYZsh{} i.e. if the string is 6 characters long, the last position = 5}
-        
-        \PY{n}{count} \PY{o}{=} \PY{n}{length} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
-        
-        \PY{c+c1}{\PYZsh{} we\PYZsq{}ve got to to all the way to 0}
-        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{)}
-            \PY{n}{count} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
-                  
-        \PY{c+c1}{\PYZsh{} print the last two characters in the string}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The last two characters are }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{str\PYZus{}var}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}\PY{p}{)}
-        
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} now print the name on a single line one character at a time}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{ticker} \PY{k}{as} \PY{n+nn}{mticker}
+        \PY{k+kn}{from} \PY{n+nn}{cycler} \PY{k}{import} \PY{n}{cycler}
+        \PY{k+kn}{from} \PY{n+nn}{six}\PY{n+nn}{.}\PY{n+nn}{moves} \PY{k}{import} \PY{n+nb}{zip}
         
         
-        \PY{c+c1}{\PYZsh{} start counting with the 0 or first character}
-        \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
+        \PY{k}{def} \PY{n+nf}{filled\PYZus{}hist}\PY{p}{(}\PY{n}{ax}\PY{p}{,} \PY{n}{edges}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{n}{bottoms}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{v}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                        \PY{o}{*}\PY{o}{*}\PY{n}{kwargs}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Draw a histogram as a stepped patch.}
         
-        \PY{c+c1}{\PYZsh{} print the individual letters in a line}
-        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZlt{}} \PY{n}{length}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{,} \PY{n}{end} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-            \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-            
-        \PY{c+c1}{\PYZsh{} we\PYZsq{}ve stripped the newline from the end of the print statement with end = \PYZsq{}\PYZsq{}}
-        \PY{c+c1}{\PYZsh{} if we don\PYZsq{}t add an empty print statement or add a newline we\PYZsq{}ll keep}
-        \PY{c+c1}{\PYZsh{} printing on the same line.}
+        \PY{l+s+sd}{    Extra kwargs are passed through to `fill\PYZus{}between`}
         
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{l+s+sd}{    Parameters}
+        \PY{l+s+sd}{    \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+        \PY{l+s+sd}{    ax : Axes}
+        \PY{l+s+sd}{        The axes to plot to}
         
-        \PY{c+c1}{\PYZsh{} and now reverse the letters in a line}
-        \PY{n}{count} \PY{o}{=} \PY{n}{length} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+        \PY{l+s+sd}{    edges : array}
+        \PY{l+s+sd}{        A length n+1 array giving the left edges of each bin and the}
+        \PY{l+s+sd}{        right edge of the last bin.}
         
-        \PY{c+c1}{\PYZsh{} we\PYZsq{}ve got to to all the way to 0}
-        \PY{k}{while} \PY{n}{count} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{n}{str\PYZus{}var}\PY{p}{[}\PY{n}{count}\PY{p}{]}\PY{p}{,} \PY{n}{end} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-            \PY{n}{count} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{l+m+mi}{1}
-\end{Verbatim}
-
-
-    \hypertarget{try-it-yourself}{%
-\subsubsection{Try It Yourself}\label{try-it-yourself}}
-
-Now for a little challenge\ldots{}
-
-\begin{itemize}
-\tightlist
-\item
-  Write a Python program that accepts string input from the keyboard.
-\item
-  Print the input, whether a single name or sentence, in reverse order
-  one letter at a time.
-\item
-  Have the program continue to accept input (looping) until the user
-  types `quit'.
-\item
-  No error trapping needed. Accept any input. You will see that numbers
-  work as well as letters.
-\end{itemize}
-
-    \hypertarget{more-functions}{%
-\subsubsection{More functions}\label{more-functions}}
-
-Let's write a function to determine whether or not an integer is prime.
-This script looks like a longer program and it is, but I've used a lot
-of remark statements to help me remember how the program was written and
-what I was thinking at the time.
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} isprime function}
+        \PY{l+s+sd}{    values : array}
+        \PY{l+s+sd}{        A length n array of bin counts or values}
         
-        \PY{k}{def} \PY{n+nf}{isprime}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
-            
-            \PY{c+c1}{\PYZsh{} prime acts as a flag to let us know if we have a prime or not}
-            \PY{c+c1}{\PYZsh{} we start out with prime = True}
-            
-            \PY{n}{prime} \PY{o}{=} \PY{k+kc}{True}
-            
-            \PY{c+c1}{\PYZsh{} we need to divide by all integers up to a certain point }
-            \PY{c+c1}{\PYZsh{} to see if any are divisors of our test value.  We know}
-            \PY{c+c1}{\PYZsh{} all numbers \PYZgt{} 2 can\PYZsq{}t be prime, so we start with 3 and}
-            \PY{c+c1}{\PYZsh{} then use odd numbers}
-            
-            \PY{n}{divisor} \PY{o}{=} \PY{l+m+mi}{3}
-            
-            \PY{c+c1}{\PYZsh{} we will check divisors up to one less than half the test value}
-            \PY{c+c1}{\PYZsh{} actually, we only need to check up to the square root of the}
-            \PY{c+c1}{\PYZsh{} test value... n**(1/2) Why?}
-            
-            \PY{k}{while} \PY{n}{divisor} \PY{o}{\PYZlt{}} \PY{p}{(}\PY{n}{n}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}
-                
-                \PY{c+c1}{\PYZsh{} the \PYZpc{} is the modular or remainder division symbol}
-                \PY{c+c1}{\PYZsh{} it returns only the remainder in a division problem}
-                \PY{c+c1}{\PYZsh{} if the remainder == 0, then we have a divisor and the}
-                \PY{c+c1}{\PYZsh{} test value is NOT prime}
-                
-                \PY{k}{if} \PY{n}{n}\PY{o}{\PYZpc{}}\PY{k}{divisor} == 0:
-                    
-                    \PY{c+c1}{\PYZsh{} if we have a divisor, flag it by changing noprime to True}
-                    \PY{n}{prime} \PY{o}{=} \PY{k+kc}{False}
-                    
-                    \PY{c+c1}{\PYZsh{} get out of the while loop... we are done}
-                    \PY{k}{break}
-                    
-                \PY{k}{else}\PY{p}{:}
-                    \PY{c+c1}{\PYZsh{} add two to the divisor and try again.  Since we started with}
-                    \PY{c+c1}{\PYZsh{} 3, this statement runs through the odd numbers}
-                    \PY{n}{divisor} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{2}
+        \PY{l+s+sd}{    bottoms : scalar or array, optional}
+        \PY{l+s+sd}{        A length n array of the bottom of the bars.  If None, zero is used.}
         
-            \PY{c+c1}{\PYZsh{} now the moment of truth. If we went through all of the potential divisors}
-            \PY{c+c1}{\PYZsh{} and did not change the value of prime from True to False, we have a prime number}
-            
-            \PY{k}{if} \PY{n}{prime} \PY{o}{==} \PY{k+kc}{True}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ is prime.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{} and if we DID find a divisor, prime was changed to False}
-            \PY{c+c1}{\PYZsh{} and we\PYZsq{}ll print accordingly}
-            
+        \PY{l+s+sd}{    orientation : \PYZob{}\PYZsq{}v\PYZsq{}, \PYZsq{}h\PYZsq{}\PYZcb{}}
+        \PY{l+s+sd}{       Orientation of the histogram.  \PYZsq{}v\PYZsq{} (default) has}
+        \PY{l+s+sd}{       the bars increasing in the positive y\PYZhy{}direction.}
+        
+        \PY{l+s+sd}{    Returns}
+        \PY{l+s+sd}{    \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+        \PY{l+s+sd}{    ret : PolyCollection}
+        \PY{l+s+sd}{        Artist added to the Axes}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{orientation}\PY{p}{)}
+            \PY{k}{if} \PY{n}{orientation} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n+nb}{set}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{orientation must be in }\PY{l+s+s2}{\PYZob{}\PYZob{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{h}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{v}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{\PYZcb{}\PYZcb{} }\PY{l+s+s2}{\PYZdq{}}
+                                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{not }\PY{l+s+si}{\PYZob{}o\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{o}\PY{o}{=}\PY{n}{orientation}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{kwargs}\PY{o}{.}\PY{n}{setdefault}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{step}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{post}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{edges} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{edges}\PY{p}{)}
+            \PY{n}{values} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{values}\PY{p}{)}
+            \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{edges}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1} \PY{o}{!=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{values}\PY{p}{)}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Must provide one more bin edge than value not: }\PY{l+s+s1}{\PYZsq{}}
+                                 \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{len(edges): }\PY{l+s+si}{\PYZob{}lb\PYZcb{}}\PY{l+s+s1}{ len(values): }\PY{l+s+si}{\PYZob{}lv\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                                     \PY{n}{lb}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n}{edges}\PY{p}{)}\PY{p}{,} \PY{n}{lv}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n}{values}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        
+            \PY{k}{if} \PY{n}{bottoms} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{values}\PY{p}{)}
+            \PY{k}{if} \PY{n}{np}\PY{o}{.}\PY{n}{isscalar}\PY{p}{(}\PY{n}{bottoms}\PY{p}{)}\PY{p}{:}
+                \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones\PYZus{}like}\PY{p}{(}\PY{n}{values}\PY{p}{)} \PY{o}{*} \PY{n}{bottoms}
+        
+            \PY{n}{values} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{r\PYZus{}}\PY{p}{[}\PY{n}{values}\PY{p}{,} \PY{n}{values}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+            \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{r\PYZus{}}\PY{p}{[}\PY{n}{bottoms}\PY{p}{,} \PY{n}{bottoms}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+            \PY{k}{if} \PY{n}{orientation} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{h}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{k}{return} \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}betweenx}\PY{p}{(}\PY{n}{edges}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{n}{bottoms}\PY{p}{,}
+                                        \PY{o}{*}\PY{o}{*}\PY{n}{kwargs}\PY{p}{)}
+            \PY{k}{elif} \PY{n}{orientation} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{v}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{k}{return} \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}between}\PY{p}{(}\PY{n}{edges}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{n}{bottoms}\PY{p}{,}
+                                       \PY{o}{*}\PY{o}{*}\PY{n}{kwargs}\PY{p}{)}
             \PY{k}{else}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ is composite.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
+                \PY{k}{raise} \PY{n+ne}{AssertionError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{you should never be here}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         
-        \PY{c+c1}{\PYZsh{} test value }
-            
-        \PY{n}{isprime}\PY{p}{(}\PY{l+m+mi}{45587}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax}\PY{p}{,} \PY{n}{stacked\PYZus{}data}\PY{p}{,} \PY{n}{sty\PYZus{}cycle}\PY{p}{,} \PY{n}{bottoms}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}
+                       \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}
+                       \PY{n}{plot\PYZus{}func}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{plot\PYZus{}kwargs}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    ax : axes.Axes}
+        \PY{l+s+sd}{        The axes to add artists too}
+        
+        \PY{l+s+sd}{    stacked\PYZus{}data : array or Mapping}
+        \PY{l+s+sd}{        A (N, M) shaped array.  The first dimension will be iterated over to}
+        \PY{l+s+sd}{        compute histograms row\PYZhy{}wise}
+        
+        \PY{l+s+sd}{    sty\PYZus{}cycle : Cycler or operable of dict}
+        \PY{l+s+sd}{        Style to apply to each set}
+        
+        \PY{l+s+sd}{    bottoms : array, optional}
+        \PY{l+s+sd}{        The initial positions of the bottoms, defaults to 0}
+        
+        \PY{l+s+sd}{    hist\PYZus{}func : callable, optional}
+        \PY{l+s+sd}{        Must have signature `bin\PYZus{}vals, bin\PYZus{}edges = f(data)`.}
+        \PY{l+s+sd}{        `bin\PYZus{}edges` expected to be one longer than `bin\PYZus{}vals`}
+        
+        \PY{l+s+sd}{    labels : list of str, optional}
+        \PY{l+s+sd}{        The label for each set.}
+        
+        \PY{l+s+sd}{        If not given and stacked data is an array defaults to \PYZsq{}default set \PYZob{}n\PYZcb{}\PYZsq{}}
+        
+        \PY{l+s+sd}{        If stacked\PYZus{}data is a mapping, and labels is None, default to the keys}
+        \PY{l+s+sd}{        (which may come out in a random order).}
+        
+        \PY{l+s+sd}{        If stacked\PYZus{}data is a mapping and labels is given then only}
+        \PY{l+s+sd}{        the columns listed by be plotted.}
+        
+        \PY{l+s+sd}{    plot\PYZus{}func : callable, optional}
+        \PY{l+s+sd}{        Function to call to draw the histogram must have signature:}
+        
+        \PY{l+s+sd}{          ret = plot\PYZus{}func(ax, edges, top, bottoms=bottoms,}
+        \PY{l+s+sd}{                          label=label, **kwargs)}
+        
+        \PY{l+s+sd}{    plot\PYZus{}kwargs : dict, optional}
+        \PY{l+s+sd}{        Any extra kwargs to pass through to the plotting function.  This}
+        \PY{l+s+sd}{        will be the same for all calls to the plotting function and will}
+        \PY{l+s+sd}{        over\PYZhy{}ride the values in cycle.}
+        
+        \PY{l+s+sd}{    Returns}
+        \PY{l+s+sd}{    \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+        \PY{l+s+sd}{    arts : dict}
+        \PY{l+s+sd}{        Dictionary of artists keyed on their labels}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} deal with default binning function}
+            \PY{k}{if} \PY{n}{hist\PYZus{}func} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{hist\PYZus{}func} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{histogram}
+        
+            \PY{c+c1}{\PYZsh{} deal with default plotting function}
+            \PY{k}{if} \PY{n}{plot\PYZus{}func} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{plot\PYZus{}func} \PY{o}{=} \PY{n}{filled\PYZus{}hist}
+        
+            \PY{c+c1}{\PYZsh{} deal with default}
+            \PY{k}{if} \PY{n}{plot\PYZus{}kwargs} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{plot\PYZus{}kwargs} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{plot\PYZus{}kwargs}\PY{p}{)}
+            \PY{k}{try}\PY{p}{:}
+                \PY{n}{l\PYZus{}keys} \PY{o}{=} \PY{n}{stacked\PYZus{}data}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
+                \PY{n}{label\PYZus{}data} \PY{o}{=} \PY{k+kc}{True}
+                \PY{k}{if} \PY{n}{labels} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{labels} \PY{o}{=} \PY{n}{l\PYZus{}keys}
+        
+            \PY{k}{except} \PY{n+ne}{AttributeError}\PY{p}{:}
+                \PY{n}{label\PYZus{}data} \PY{o}{=} \PY{k+kc}{False}
+                \PY{k}{if} \PY{n}{labels} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{labels} \PY{o}{=} \PY{n}{itertools}\PY{o}{.}\PY{n}{repeat}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}
+        
+            \PY{k}{if} \PY{n}{label\PYZus{}data}\PY{p}{:}
+                \PY{n}{loop\PYZus{}iter} \PY{o}{=} \PY{n+nb}{enumerate}\PY{p}{(}\PY{p}{(}\PY{n}{stacked\PYZus{}data}\PY{p}{[}\PY{n}{lab}\PY{p}{]}\PY{p}{,} \PY{n}{lab}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{k}{for} \PY{n}{lab}\PY{p}{,} \PY{n}{s} \PY{o+ow}{in}
+                                      \PY{n+nb}{zip}\PY{p}{(}\PY{n}{labels}\PY{p}{,} \PY{n}{sty\PYZus{}cycle}\PY{p}{)}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{loop\PYZus{}iter} \PY{o}{=} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{stacked\PYZus{}data}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{sty\PYZus{}cycle}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{arts} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            \PY{k}{for} \PY{n}{j}\PY{p}{,} \PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{label}\PY{p}{,} \PY{n}{sty}\PY{p}{)} \PY{o+ow}{in} \PY{n}{loop\PYZus{}iter}\PY{p}{:}
+                \PY{k}{if} \PY{n}{label} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{label} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dflt set }\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{n}{j}\PY{p}{)}
+                \PY{n}{label} \PY{o}{=} \PY{n}{sty}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{p}{)}
+                \PY{n}{vals}\PY{p}{,} \PY{n}{edges} \PY{o}{=} \PY{n}{hist\PYZus{}func}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+                \PY{k}{if} \PY{n}{bottoms} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{vals}\PY{p}{)}
+                \PY{n}{top} \PY{o}{=} \PY{n}{bottoms} \PY{o}{+} \PY{n}{vals}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{sty}\PY{p}{)}
+                \PY{n}{sty}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{plot\PYZus{}kwargs}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{sty}\PY{p}{)}
+                \PY{n}{ret} \PY{o}{=} \PY{n}{plot\PYZus{}func}\PY{p}{(}\PY{n}{ax}\PY{p}{,} \PY{n}{edges}\PY{p}{,} \PY{n}{top}\PY{p}{,} \PY{n}{bottoms}\PY{o}{=}\PY{n}{bottoms}\PY{p}{,}
+                                \PY{n}{label}\PY{o}{=}\PY{n}{label}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{sty}\PY{p}{)}
+                \PY{n}{bottoms} \PY{o}{=} \PY{n}{top}
+                \PY{n}{arts}\PY{p}{[}\PY{n}{label}\PY{p}{]} \PY{o}{=} \PY{n}{ret}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+            \PY{k}{return} \PY{n}{arts}
+        
+        
+        \PY{c+c1}{\PYZsh{} set up histogram function to fixed bins}
+        \PY{n}{edges} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{n}{endpoint}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{hist\PYZus{}func} \PY{o}{=} \PY{n}{partial}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{histogram}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{edges}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} set up style cycles}
+        \PY{n}{color\PYZus{}cycle} \PY{o}{=} \PY{n}{cycler}\PY{p}{(}\PY{n}{facecolor}\PY{o}{=}\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{axes.prop\PYZus{}cycle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}
+        \PY{n}{label\PYZus{}cycle} \PY{o}{=} \PY{n}{cycler}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{set }\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{n}{n}\PY{p}{)} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{hatch\PYZus{}cycle} \PY{o}{=} \PY{n}{cycler}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hatch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{/}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{*}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{+}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} make some synthetic data}
+        \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+        \PY{n}{stack\PYZus{}data} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randn}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{12250}\PY{p}{)}
+        \PY{n}{dict\PYZus{}data} \PY{o}{=} \PY{n}{OrderedDict}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{p}{(}\PY{n}{c}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n}{label\PYZus{}cycle}\PY{p}{)}\PY{p}{,} \PY{n}{stack\PYZus{}data}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} work with plain arrays}
+        \PY{n}{fig}\PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{4.5}\PY{p}{)}\PY{p}{,} \PY{n}{tight\PYZus{}layout}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{stack\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle} \PY{o}{+} \PY{n}{label\PYZus{}cycle} \PY{o}{+} \PY{n}{hatch\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{)}
+        
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax2}\PY{p}{,} \PY{n}{stack\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{,}
+                          \PY{n}{plot\PYZus{}kwargs}\PY{o}{=}\PY{n+nb}{dict}\PY{p}{(}\PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{h}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{counts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{counts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} work with labeled data}
+        
+        \PY{n}{fig}\PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{4.5}\PY{p}{)}\PY{p}{,}
+                                       \PY{n}{tight\PYZus{}layout}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{sharey}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{dict\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle} \PY{o}{+} \PY{n}{hatch\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{)}
+        
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax2}\PY{p}{,} \PY{n}{dict\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle} \PY{o}{+} \PY{n}{hatch\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{set 0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{set 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{xaxis}\PY{o}{.}\PY{n}{set\PYZus{}major\PYZus{}locator}\PY{p}{(}\PY{n}{mticker}\PY{o}{.}\PY{n}{MaxNLocator}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{counts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} try your own test value here}
-\end{Verbatim}
+\{\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+v
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+v
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+v
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+v
+\{'edgecolor': 'w', 'orientation': 'h'\}
+\{'facecolor': '\#1f77b4'\}
+\{'facecolor': '\#1f77b4', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{'facecolor': '\#ff7f0e'\}
+\{'facecolor': '\#ff7f0e', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{'facecolor': '\#2ca02c'\}
+\{'facecolor': '\#2ca02c', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{'facecolor': '\#d62728'\}
+\{'facecolor': '\#d62728', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+v
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+v
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+v
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+v
+\{\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+v
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+v
 
-
-    Note: We can use the \% (mod or remainder division) to determine whether
-or not a number is even or odd. Here is an example code block for that
-purpose:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# assume the variable n is some integer}
-\ControlFlowTok{if}\NormalTok{ n}\OperatorTok{%}\DecValTok{2} \OperatorTok{==} \DecValTok{0}\NormalTok{:}
-    \BuiltInTok{print}\NormalTok{(}\StringTok{'even'}\NormalTok{)}
-\ControlFlowTok{else}\NormalTok{:}
-    \BuiltInTok{print}\NormalTok{(}\StringTok{'odd'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Now let's write a square root function. I know Python can do this on its
-own, but perhaps we can put one together using what we've already
-learned. The following algorithm (computer code that performs a series
-of calculations) is based on Newton's method. It is several hundred
-years old (Newton's method, not the code), but is still useful.
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} define a square root function using Newton\PYZsq{}s method}
-        \PY{c+c1}{\PYZsh{} you can look this up online for a better explanation}
-        
-        \PY{k}{def} \PY{n+nf}{sqr}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
-            
-            \PY{c+c1}{\PYZsh{} start with a guess of 0.5*n or 1/2 of the number}
-            \PY{n}{guess} \PY{o}{=} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{n}{n}
-            
-            \PY{c+c1}{\PYZsh{} make a better guess by taking the average of}
-            \PY{c+c1}{\PYZsh{} the guess and the number divided by the guess}
-            \PY{n}{better} \PY{o}{=} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{p}{(}\PY{n}{guess} \PY{o}{+} \PY{n}{n}\PY{o}{/}\PY{n}{guess}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{} as long as the guess and the better value are}
-            \PY{c+c1}{\PYZsh{} different (not equal or !=), keep on working}
-            \PY{k}{while} \PY{n}{better} \PY{o}{!=} \PY{n}{guess}\PY{p}{:}
-                
-                \PY{c+c1}{\PYZsh{} replace guess with the better value and try again}
-                \PY{n}{guess} \PY{o}{=} \PY{n}{better}
-                
-                \PY{c+c1}{\PYZsh{} make a better guess by taking the average of}
-                \PY{c+c1}{\PYZsh{} guess and the number divided by guess}
-                \PY{n}{better} \PY{o}{=} \PY{l+m+mf}{0.5} \PY{o}{*} \PY{p}{(}\PY{n}{guess} \PY{o}{+} \PY{n}{n}\PY{o}{/}\PY{n}{guess}\PY{p}{)}
-                
-            \PY{k}{return} \PY{n}{guess}
-        
-        \PY{c+c1}{\PYZsh{} test}
-        \PY{n}{sqr}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
-            
-\end{Verbatim}
-
+    \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} try your own test values here}
-\end{Verbatim}
+/usr/local/anaconda3/lib/python3.6/site-packages/matplotlib/figure.py:2299: UserWarning: This figure includes Axes that are not compatible with tight\_layout, so results might be incorrect.
+  warnings.warn("This figure includes Axes that are not compatible "
 
+    \end{Verbatim}
 
-    \hypertarget{go-to-assignment-3}{%
-\subsubsection{Go to Assignment 3}\label{go-to-assignment-3}}
-
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
 
     % Add a bibliography block to the postdoc
     
