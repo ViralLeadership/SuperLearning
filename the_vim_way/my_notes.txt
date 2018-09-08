@@ -1,0 +1,7 @@
+Warning (initialization): An error occurred while loading ‘c:/Users/Cobbadmin/.emacs.d/init.el’:
+
+error: ‘c:/Users/Cobbadmin/.emacs.d/server’ is not a safe directory because it is not owned by you (owner = nil (544))
+
+To ensure normal operation, you should investigate and remove the
+cause of the error in your initialization file.  Start Emacs with
+the ‘--debug-init’ option to view a complete error backtrace.
