@@ -14,23 +14,29 @@ class Dog():
 
     def sit(self):
         """Simulate a dog sitting in response to a command."""
-        print(self.name.title() + " is now sitting.")
+        print(self.name.title() + " is now sitting.\n")
 
     def roll_over(self):
         """Simulate rolling over in response to a command."""
-        print(self.name.title() + " rolled over!")
+        print(self.name.title() + " rolled over!\n")
 
 my_dog = Dog('raider jenkins', 3.5)
 your_dog = Dog('lassie', 65)
 
 print("\nMy dog's name is " + my_dog.name.title() + ".")
 print("My dog, " + my_dog.name.title() + ", is "
-      + str(my_dog.age) + " years old.")
+      + str(my_dog.age) + " years old.\n")
 my_dog.sit()
 my_dog.roll_over()
 
 
 print("\nYour dog's name is " + your_dog.name.title() + ".")
+<<<<<<< HEAD
 print("Your dog, " + your_dog.name.title() + ", is at least "
       + str(your_dog.age) + " years old by now.")
+=======
+print("Your dog, " + your_dog.name.title() + ", is "
+      + str(your_dog.age) + " years old.\n")
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
 your_dog.sit()
+

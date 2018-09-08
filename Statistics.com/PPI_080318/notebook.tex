@@ -141,7 +141,11 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
+<<<<<<< HEAD
     \title{JJenkins\_HW\#3}
+=======
+    \title{JJenkins\_HW\#4}
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
     
     
     
@@ -280,6 +284,7 @@
     
 
     
+<<<<<<< HEAD
     \hypertarget{assignment-3}{%
 \section{Assignment 3}\label{assignment-3}}
 
@@ -293,10 +298,32 @@ looking for a single `correct' solution.
 
 One of the unsolved problems in mathematics is the Collatz or Hailstone
 problem. Basically, here are the rules:
+=======
+    \hypertarget{assignment-4}{%
+\section{Assignment 4}\label{assignment-4}}
+
+\hypertarget{marks}{%
+\subsubsection{(12 Marks)}\label{marks}}
+
+If you have not already done so, download the following csv file:
 
 \begin{itemize}
 \tightlist
 \item
+  \href{https://www.dropbox.com/s/br6p2brp54cjpla/tips.csv?dl=1}{tips.csv}
+\end{itemize}
+
+Using the tips.csv file, pandas and matplotlib (pyplot), complete the
+following exercises:
+
+(assume total\_bill is the cost of the meal without the tip and assume
+the values are in US dollars)
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
+
+\begin{itemize}
+\tightlist
+\item
+<<<<<<< HEAD
   Supply an integer to the function
 \item
   If the integer is even, divide by 2
@@ -312,6 +339,97 @@ problem. Basically, here are the rules:
 For example, if you write the program correctly, using:
 
 collatz(6)
+=======
+  Show the file info
+\item
+  Display the first 5 rows of the file
+\item
+  Display the last 5 rows of the file
+\item
+  Display the minimum and maximum tips
+\item
+  Display the minimum and maximum meal cost
+\item
+  Display the average tip
+\item
+  Display the average meal cost
+\item
+  Create a new column that displays the total cost (total\_cost) of each
+  meal (total\_bill + tip) and find the average total\_cost of the meals
+\item
+  On average, who tips more in this data set, males or females?
+\end{itemize}
+
+With matplotlib, display the following graphs
+
+\begin{itemize}
+\tightlist
+\item
+  Display a scatterplot of total\_bill (x-axis) vs.~tip (y-axis), label
+  the axes and add a title
+\item
+  Display a box plot of the tips
+\item
+  Display a histogram of female tip amounts, label the x-axis
+\item
+  Display a histogram of male tip amounts, label the x-axis
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{Using the tips.csv file, pandas and matplotlib (pyplot), complete the}
+        \PY{l+s+sd}{following exercises:}
+        \PY{l+s+sd}{(assume total\PYZus{}bill is the cost of the meal without the tip and assume}
+        \PY{l+s+sd}{the values are in US dollars)}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} import pandas for data analysis and matplotlib for plotting}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        
+        \PY{n}{data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tips.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Show the file info}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The file info for data is as follows: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} 
+        \PY{n}{data}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the first 5 rows of the file}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The first 5 rows of the file are: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the last 5 rows of the file}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The last 5 rows of the file are: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the minimum and maximum tips}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The minimum tip was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The maximum tip was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the minimum and maximum meal cost}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{The minimum meal cost was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The maximum meal cost was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the average tip}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The average tip was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display the average meal cost}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The average meal cost was \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Create a new column that displays the total cost (total\PYZus{}cost) of each meal (total\PYZus{}bill + tip) and find the average total\PYZus{}cost of the meals}
+        \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}cost}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{+} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{With the new column showing total cost, the first 5 rows }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} 
+              \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{of the file are: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}On average, who tips more in this data set, males or females?}
+        \PY{c+c1}{\PYZsh{}data[data.sex = \PYZdq{}Female\PYZdq{}]}
+        \PY{n}{females} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Female}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{males} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Male}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{In this data set the average female tip is \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{females}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{In this data set the average male tip is \PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{males}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{k}{if} \PY{n}{females}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{males}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{On average in this data set females tip more than males.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{On average, in this data set, males tip more than females.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
 
 Will result in the function determining that 6 is even and then dividing
 6/2 producing 3. 3 is odd, so the function will perform 3\emph{(3)+1 =
@@ -319,6 +437,7 @@ Will result in the function determining that 6 is even and then dividing
 3}(5)+1 = 16. 16 is even, 16/2 = 8. 8 is even, 8/2 = 4. 4 is even, 4/2 =
 2. 2 is even, 2/2 = 1 and we are finished.
 
+<<<<<<< HEAD
 So, the collatz(6) function call results in the following Collatz
 sequence:
 
@@ -357,14 +476,109 @@ you supply and then print the resulting Collatz numbers until the number
         \PY{n}{collatz}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{)}
         \PY{n}{collatz}\PY{p}{(}\PY{l+m+mi}{97}\PY{p}{)}
 \end{Verbatim}
+=======
+    \begin{Verbatim}[commandchars=\\\{\}]
+The file info for data is as follows: 
 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 244 entries, 0 to 243
+Data columns (total 7 columns):
+total\_bill    244 non-null float64
+tip           244 non-null float64
+sex           244 non-null object
+smoker        244 non-null object
+day           244 non-null object
+time          244 non-null object
+size          244 non-null int64
+dtypes: float64(2), int64(1), object(4)
+memory usage: 13.4+ KB
+
+The first 5 rows of the file are: 
+
+    total\_bill   tip     sex smoker  day    time  size
+0       16.99  1.01  Female     No  Sun  Dinner     2
+1       10.34  1.66    Male     No  Sun  Dinner     3
+2       21.01  3.50    Male     No  Sun  Dinner     3
+3       23.68  3.31    Male     No  Sun  Dinner     2
+4       24.59  3.61  Female     No  Sun  Dinner     4
+
+The last 5 rows of the file are: 
+
+      total\_bill   tip     sex smoker   day    time  size
+239       29.03  5.92    Male     No   Sat  Dinner     3
+240       27.18  2.00  Female    Yes   Sat  Dinner     2
+241       22.67  2.00    Male    Yes   Sat  Dinner     2
+242       17.82  1.75    Male     No   Sat  Dinner     2
+243       18.78  3.00  Female     No  Thur  Dinner     2
+
+The minimum tip was \$1.00.
+The maximum tip was \$10.00.
+
+
+The minimum meal cost was \$3.07.
+The maximum meal cost was \$50.81.
+
+The average tip was \$3.00.
+
+The average meal cost was \$19.79.
+
+With the new column showing total cost, the first 5 rows of the file are: 
+    total\_bill   tip     sex smoker  day    time  size  total\_cost
+0       16.99  1.01  Female     No  Sun  Dinner     2       18.00
+1       10.34  1.66    Male     No  Sun  Dinner     3       12.00
+2       21.01  3.50    Male     No  Sun  Dinner     3       24.51
+3       23.68  3.31    Male     No  Sun  Dinner     2       26.99
+4       24.59  3.61  Female     No  Sun  Dinner     4       28.20
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
+
+In this data set the average female tip is \$2.83.
+In this data set the average male tip is \$3.09
+On average, in this data set, males tip more than females.
+
+<<<<<<< HEAD
+    \begin{Verbatim}[commandchars=\\\{\}]
+=======
+    \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{}With matplotlib, display the following graphs}
+        \PY{c+c1}{\PYZsh{}Display a scatterplot of total\PYZus{}bill (x\PYZhy{}axis) vs. tip (y\PYZhy{}axis), label the axes and add a title}
+        \PY{n}{x} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{total\PYZus{}bill}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{y} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} axis labels and graph title}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total Bill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tip}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Scatter Plot: }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{Total Bill vs. Tip}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} render the scatter plot}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display a box plot of the tips}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tip}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Tips}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display a histogram of female tip amounts, label the x\PYZhy{}axis}
+        \PY{n}{females} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Female}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{females}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Female Tip Amounts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Display a histogram of male tip amounts, label the x\PYZhy{}axis}
+        \PY{n}{males} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{sex} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Male}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{males}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Male Tip Amounts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
 
 For the integer 6, there are 9 steps until the Collatz number reaches 1 as shown in the following sequence:
 
  [6, 3, 10, 5, 16, 8, 4, 2, 1]
 
+<<<<<<< HEAD
 For the integer 97, there are 119 steps until the Collatz number reaches 1 as shown in the following sequence:
 
  [97, 292, 146, 73, 220, 110, 55, 166, 83, 250, 125, 376, 188, 94, 47, 142, 71, 214, 107, 322, 161, 484, 242, 121, 364, 182, 91, 274, 137, 412, 206, 103, 310, 155, 466, 233, 700, 350, 175, 526, 263, 790, 395, 1186, 593, 1780, 890, 445, 1336, 668, 334, 167, 502, 251, 754, 377, 1132, 566, 283, 850, 425, 1276, 638, 319, 958, 479, 1438, 719, 2158, 1079, 3238, 1619, 4858, 2429, 7288, 3644, 1822, 911, 2734, 1367, 4102, 2051, 6154, 3077, 9232, 4616, 2308, 1154, 577, 1732, 866, 433, 1300, 650, 325, 976, 488, 244, 122, 61, 184, 92, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1]
@@ -406,8 +620,77 @@ divisor.}\label{i-used-the-next-cell-to-look-at-n2-as-my-stopping-divisor.}}
             \PY{n}{stopping\PYZus{}divisor2} \PY{o}{=} \PY{p}{(}\PY{n}{n}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
             \PY{n}{my\PYZus{}primes1} \PY{o}{=} \PY{p}{[}\PY{p}{]}
             \PY{n}{my\PYZus{}primes2} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+=======
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_2_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Go to the matplotlib website and copy the code from an example
+plot\ldots{} any example plot that looks interesting or pleasing to you.
+There is no other requirement for this exercise.
+
+Paste the code in the cell below and display the graph. Yes, this is
+easy and somewhat trivial\ldots{} but I want to be dazzled by something
+neat :-)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{=========================}
+        \PY{l+s+sd}{Hatch\PYZhy{}filled histograms}
+        \PY{l+s+sd}{=========================}
+        
+        \PY{l+s+sd}{This example showcases the hatching capabilities of matplotlib by plotting}
+        \PY{l+s+sd}{various histograms.}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        
+        \PY{k+kn}{import} \PY{n+nn}{itertools}
+        \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{OrderedDict}
+        \PY{k+kn}{from} \PY{n+nn}{functools} \PY{k}{import} \PY{n}{partial}
+        
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{ticker} \PY{k}{as} \PY{n+nn}{mticker}
+        \PY{k+kn}{from} \PY{n+nn}{cycler} \PY{k}{import} \PY{n}{cycler}
+        \PY{k+kn}{from} \PY{n+nn}{six}\PY{n+nn}{.}\PY{n+nn}{moves} \PY{k}{import} \PY{n+nb}{zip}
         
         
+        \PY{k}{def} \PY{n+nf}{filled\PYZus{}hist}\PY{p}{(}\PY{n}{ax}\PY{p}{,} \PY{n}{edges}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{n}{bottoms}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{v}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                        \PY{o}{*}\PY{o}{*}\PY{n}{kwargs}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Draw a histogram as a stepped patch.}
+        
+        \PY{l+s+sd}{    Extra kwargs are passed through to `fill\PYZus{}between`}
+        
+        \PY{l+s+sd}{    Parameters}
+        \PY{l+s+sd}{    \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+        \PY{l+s+sd}{    ax : Axes}
+        \PY{l+s+sd}{        The axes to plot to}
+        
+        \PY{l+s+sd}{    edges : array}
+        \PY{l+s+sd}{        A length n+1 array giving the left edges of each bin and the}
+        \PY{l+s+sd}{        right edge of the last bin.}
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
+        
+        \PY{l+s+sd}{    values : array}
+        \PY{l+s+sd}{        A length n array of bin counts or values}
+        
+<<<<<<< HEAD
             \PY{k}{for} \PY{n}{number} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{stopping\PYZus{}divisor1}\PY{p}{)}\PY{p}{)}\PY{p}{:}
                 \PY{n}{start1} \PY{o}{=} \PY{n}{timer}\PY{p}{(}\PY{p}{)}
                 \PY{c+c1}{\PYZsh{} only looking at positive integers}
@@ -605,6 +888,259 @@ Using (n**0.5) as the stopping divisor was 0.000000300457206 seconds faster than
 
     \end{Verbatim}
 
+=======
+        \PY{l+s+sd}{    bottoms : scalar or array, optional}
+        \PY{l+s+sd}{        A length n array of the bottom of the bars.  If None, zero is used.}
+        
+        \PY{l+s+sd}{    orientation : \PYZob{}\PYZsq{}v\PYZsq{}, \PYZsq{}h\PYZsq{}\PYZcb{}}
+        \PY{l+s+sd}{       Orientation of the histogram.  \PYZsq{}v\PYZsq{} (default) has}
+        \PY{l+s+sd}{       the bars increasing in the positive y\PYZhy{}direction.}
+        
+        \PY{l+s+sd}{    Returns}
+        \PY{l+s+sd}{    \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+        \PY{l+s+sd}{    ret : PolyCollection}
+        \PY{l+s+sd}{        Artist added to the Axes}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{orientation}\PY{p}{)}
+            \PY{k}{if} \PY{n}{orientation} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n+nb}{set}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{orientation must be in }\PY{l+s+s2}{\PYZob{}\PYZob{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{h}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{v}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{\PYZcb{}\PYZcb{} }\PY{l+s+s2}{\PYZdq{}}
+                                 \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{not }\PY{l+s+si}{\PYZob{}o\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{o}\PY{o}{=}\PY{n}{orientation}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{kwargs}\PY{o}{.}\PY{n}{setdefault}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{step}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{post}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{edges} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{edges}\PY{p}{)}
+            \PY{n}{values} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{values}\PY{p}{)}
+            \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{edges}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1} \PY{o}{!=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{values}\PY{p}{)}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Must provide one more bin edge than value not: }\PY{l+s+s1}{\PYZsq{}}
+                                 \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{len(edges): }\PY{l+s+si}{\PYZob{}lb\PYZcb{}}\PY{l+s+s1}{ len(values): }\PY{l+s+si}{\PYZob{}lv\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                                     \PY{n}{lb}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n}{edges}\PY{p}{)}\PY{p}{,} \PY{n}{lv}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n}{values}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        
+            \PY{k}{if} \PY{n}{bottoms} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{values}\PY{p}{)}
+            \PY{k}{if} \PY{n}{np}\PY{o}{.}\PY{n}{isscalar}\PY{p}{(}\PY{n}{bottoms}\PY{p}{)}\PY{p}{:}
+                \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones\PYZus{}like}\PY{p}{(}\PY{n}{values}\PY{p}{)} \PY{o}{*} \PY{n}{bottoms}
+        
+            \PY{n}{values} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{r\PYZus{}}\PY{p}{[}\PY{n}{values}\PY{p}{,} \PY{n}{values}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+            \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{r\PYZus{}}\PY{p}{[}\PY{n}{bottoms}\PY{p}{,} \PY{n}{bottoms}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+            \PY{k}{if} \PY{n}{orientation} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{h}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{k}{return} \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}betweenx}\PY{p}{(}\PY{n}{edges}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{n}{bottoms}\PY{p}{,}
+                                        \PY{o}{*}\PY{o}{*}\PY{n}{kwargs}\PY{p}{)}
+            \PY{k}{elif} \PY{n}{orientation} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{v}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{k}{return} \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}between}\PY{p}{(}\PY{n}{edges}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{n}{bottoms}\PY{p}{,}
+                                       \PY{o}{*}\PY{o}{*}\PY{n}{kwargs}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{AssertionError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{you should never be here}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        
+        \PY{k}{def} \PY{n+nf}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax}\PY{p}{,} \PY{n}{stacked\PYZus{}data}\PY{p}{,} \PY{n}{sty\PYZus{}cycle}\PY{p}{,} \PY{n}{bottoms}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}
+                       \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}
+                       \PY{n}{plot\PYZus{}func}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{plot\PYZus{}kwargs}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    ax : axes.Axes}
+        \PY{l+s+sd}{        The axes to add artists too}
+        
+        \PY{l+s+sd}{    stacked\PYZus{}data : array or Mapping}
+        \PY{l+s+sd}{        A (N, M) shaped array.  The first dimension will be iterated over to}
+        \PY{l+s+sd}{        compute histograms row\PYZhy{}wise}
+        
+        \PY{l+s+sd}{    sty\PYZus{}cycle : Cycler or operable of dict}
+        \PY{l+s+sd}{        Style to apply to each set}
+        
+        \PY{l+s+sd}{    bottoms : array, optional}
+        \PY{l+s+sd}{        The initial positions of the bottoms, defaults to 0}
+        
+        \PY{l+s+sd}{    hist\PYZus{}func : callable, optional}
+        \PY{l+s+sd}{        Must have signature `bin\PYZus{}vals, bin\PYZus{}edges = f(data)`.}
+        \PY{l+s+sd}{        `bin\PYZus{}edges` expected to be one longer than `bin\PYZus{}vals`}
+        
+        \PY{l+s+sd}{    labels : list of str, optional}
+        \PY{l+s+sd}{        The label for each set.}
+        
+        \PY{l+s+sd}{        If not given and stacked data is an array defaults to \PYZsq{}default set \PYZob{}n\PYZcb{}\PYZsq{}}
+        
+        \PY{l+s+sd}{        If stacked\PYZus{}data is a mapping, and labels is None, default to the keys}
+        \PY{l+s+sd}{        (which may come out in a random order).}
+        
+        \PY{l+s+sd}{        If stacked\PYZus{}data is a mapping and labels is given then only}
+        \PY{l+s+sd}{        the columns listed by be plotted.}
+        
+        \PY{l+s+sd}{    plot\PYZus{}func : callable, optional}
+        \PY{l+s+sd}{        Function to call to draw the histogram must have signature:}
+        
+        \PY{l+s+sd}{          ret = plot\PYZus{}func(ax, edges, top, bottoms=bottoms,}
+        \PY{l+s+sd}{                          label=label, **kwargs)}
+        
+        \PY{l+s+sd}{    plot\PYZus{}kwargs : dict, optional}
+        \PY{l+s+sd}{        Any extra kwargs to pass through to the plotting function.  This}
+        \PY{l+s+sd}{        will be the same for all calls to the plotting function and will}
+        \PY{l+s+sd}{        over\PYZhy{}ride the values in cycle.}
+        
+        \PY{l+s+sd}{    Returns}
+        \PY{l+s+sd}{    \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+        \PY{l+s+sd}{    arts : dict}
+        \PY{l+s+sd}{        Dictionary of artists keyed on their labels}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} deal with default binning function}
+            \PY{k}{if} \PY{n}{hist\PYZus{}func} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{hist\PYZus{}func} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{histogram}
+        
+            \PY{c+c1}{\PYZsh{} deal with default plotting function}
+            \PY{k}{if} \PY{n}{plot\PYZus{}func} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{plot\PYZus{}func} \PY{o}{=} \PY{n}{filled\PYZus{}hist}
+        
+            \PY{c+c1}{\PYZsh{} deal with default}
+            \PY{k}{if} \PY{n}{plot\PYZus{}kwargs} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                \PY{n}{plot\PYZus{}kwargs} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{plot\PYZus{}kwargs}\PY{p}{)}
+            \PY{k}{try}\PY{p}{:}
+                \PY{n}{l\PYZus{}keys} \PY{o}{=} \PY{n}{stacked\PYZus{}data}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
+                \PY{n}{label\PYZus{}data} \PY{o}{=} \PY{k+kc}{True}
+                \PY{k}{if} \PY{n}{labels} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{labels} \PY{o}{=} \PY{n}{l\PYZus{}keys}
+        
+            \PY{k}{except} \PY{n+ne}{AttributeError}\PY{p}{:}
+                \PY{n}{label\PYZus{}data} \PY{o}{=} \PY{k+kc}{False}
+                \PY{k}{if} \PY{n}{labels} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{labels} \PY{o}{=} \PY{n}{itertools}\PY{o}{.}\PY{n}{repeat}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}
+        
+            \PY{k}{if} \PY{n}{label\PYZus{}data}\PY{p}{:}
+                \PY{n}{loop\PYZus{}iter} \PY{o}{=} \PY{n+nb}{enumerate}\PY{p}{(}\PY{p}{(}\PY{n}{stacked\PYZus{}data}\PY{p}{[}\PY{n}{lab}\PY{p}{]}\PY{p}{,} \PY{n}{lab}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{k}{for} \PY{n}{lab}\PY{p}{,} \PY{n}{s} \PY{o+ow}{in}
+                                      \PY{n+nb}{zip}\PY{p}{(}\PY{n}{labels}\PY{p}{,} \PY{n}{sty\PYZus{}cycle}\PY{p}{)}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{loop\PYZus{}iter} \PY{o}{=} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{stacked\PYZus{}data}\PY{p}{,} \PY{n}{labels}\PY{p}{,} \PY{n}{sty\PYZus{}cycle}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{arts} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            \PY{k}{for} \PY{n}{j}\PY{p}{,} \PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{label}\PY{p}{,} \PY{n}{sty}\PY{p}{)} \PY{o+ow}{in} \PY{n}{loop\PYZus{}iter}\PY{p}{:}
+                \PY{k}{if} \PY{n}{label} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{label} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dflt set }\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{n}{j}\PY{p}{)}
+                \PY{n}{label} \PY{o}{=} \PY{n}{sty}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{p}{)}
+                \PY{n}{vals}\PY{p}{,} \PY{n}{edges} \PY{o}{=} \PY{n}{hist\PYZus{}func}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+                \PY{k}{if} \PY{n}{bottoms} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                    \PY{n}{bottoms} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{vals}\PY{p}{)}
+                \PY{n}{top} \PY{o}{=} \PY{n}{bottoms} \PY{o}{+} \PY{n}{vals}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{sty}\PY{p}{)}
+                \PY{n}{sty}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{plot\PYZus{}kwargs}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{n}{sty}\PY{p}{)}
+                \PY{n}{ret} \PY{o}{=} \PY{n}{plot\PYZus{}func}\PY{p}{(}\PY{n}{ax}\PY{p}{,} \PY{n}{edges}\PY{p}{,} \PY{n}{top}\PY{p}{,} \PY{n}{bottoms}\PY{o}{=}\PY{n}{bottoms}\PY{p}{,}
+                                \PY{n}{label}\PY{o}{=}\PY{n}{label}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{sty}\PY{p}{)}
+                \PY{n}{bottoms} \PY{o}{=} \PY{n}{top}
+                \PY{n}{arts}\PY{p}{[}\PY{n}{label}\PY{p}{]} \PY{o}{=} \PY{n}{ret}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+            \PY{k}{return} \PY{n}{arts}
+        
+        
+        \PY{c+c1}{\PYZsh{} set up histogram function to fixed bins}
+        \PY{n}{edges} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{n}{endpoint}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{hist\PYZus{}func} \PY{o}{=} \PY{n}{partial}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{histogram}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{edges}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} set up style cycles}
+        \PY{n}{color\PYZus{}cycle} \PY{o}{=} \PY{n}{cycler}\PY{p}{(}\PY{n}{facecolor}\PY{o}{=}\PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{axes.prop\PYZus{}cycle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}
+        \PY{n}{label\PYZus{}cycle} \PY{o}{=} \PY{n}{cycler}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{set }\PY{l+s+si}{\PYZob{}n\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{o}{=}\PY{n}{n}\PY{p}{)} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{hatch\PYZus{}cycle} \PY{o}{=} \PY{n}{cycler}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hatch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{/}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{*}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{+}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} make some synthetic data}
+        \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+        \PY{n}{stack\PYZus{}data} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randn}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{12250}\PY{p}{)}
+        \PY{n}{dict\PYZus{}data} \PY{o}{=} \PY{n}{OrderedDict}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{p}{(}\PY{n}{c}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{label}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n}{label\PYZus{}cycle}\PY{p}{)}\PY{p}{,} \PY{n}{stack\PYZus{}data}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} work with plain arrays}
+        \PY{n}{fig}\PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{4.5}\PY{p}{)}\PY{p}{,} \PY{n}{tight\PYZus{}layout}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{stack\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle} \PY{o}{+} \PY{n}{label\PYZus{}cycle} \PY{o}{+} \PY{n}{hatch\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{)}
+        
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax2}\PY{p}{,} \PY{n}{stack\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{,}
+                          \PY{n}{plot\PYZus{}kwargs}\PY{o}{=}\PY{n+nb}{dict}\PY{p}{(}\PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{h}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{counts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{counts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} work with labeled data}
+        
+        \PY{n}{fig}\PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mf}{4.5}\PY{p}{)}\PY{p}{,}
+                                       \PY{n}{tight\PYZus{}layout}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{sharey}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+        
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{dict\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle} \PY{o}{+} \PY{n}{hatch\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{)}
+        
+        \PY{n}{arts} \PY{o}{=} \PY{n}{stack\PYZus{}hist}\PY{p}{(}\PY{n}{ax2}\PY{p}{,} \PY{n}{dict\PYZus{}data}\PY{p}{,} \PY{n}{color\PYZus{}cycle} \PY{o}{+} \PY{n}{hatch\PYZus{}cycle}\PY{p}{,}
+                          \PY{n}{hist\PYZus{}func}\PY{o}{=}\PY{n}{hist\PYZus{}func}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{set 0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{set 3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{xaxis}\PY{o}{.}\PY{n}{set\PYZus{}major\PYZus{}locator}\PY{p}{(}\PY{n}{mticker}\PY{o}{.}\PY{n}{MaxNLocator}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{counts}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+v
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+v
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+v
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+v
+\{'edgecolor': 'w', 'orientation': 'h'\}
+\{'facecolor': '\#1f77b4'\}
+\{'facecolor': '\#1f77b4', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{'facecolor': '\#ff7f0e'\}
+\{'facecolor': '\#ff7f0e', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{'facecolor': '\#2ca02c'\}
+\{'facecolor': '\#2ca02c', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{'facecolor': '\#d62728'\}
+\{'facecolor': '\#d62728', 'edgecolor': 'w', 'orientation': 'h'\}
+h
+\{\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+v
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+v
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+\{'facecolor': '\#2ca02c', 'hatch': '+'\}
+v
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+\{'facecolor': '\#d62728', 'hatch': '|'\}
+v
+\{\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+\{'facecolor': '\#1f77b4', 'hatch': '/'\}
+v
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+\{'facecolor': '\#ff7f0e', 'hatch': '*'\}
+v
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/local/anaconda3/lib/python3.6/site-packages/matplotlib/figure.py:2299: UserWarning: This figure includes Axes that are not compatible with tight\_layout, so results might be incorrect.
+  warnings.warn("This figure includes Axes that are not compatible "
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+>>>>>>> 7ff28be1e15370da0c8cde46ea35bb159fb4a154
 
     % Add a bibliography block to the postdoc
     
