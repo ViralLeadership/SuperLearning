@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{JJenkins\_HW\#1}
+    \title{Week 1 HW}
     
     
     
@@ -310,7 +310,7 @@ Create a Python list with the following values: {[}1, 2, 4, 10, 12, 117,
         
         \PY{c+c1}{\PYZsh{}Compute the sum of the values.}
         \PY{n}{Q1\PYZus{}sum} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{Q1\PYZus{}list}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+si}{\PYZob{}0:,\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Q1\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q1\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         
         \PY{c+c1}{\PYZsh{}Compute the mean of the values.}
         \PY{n}{Q1\PYZus{}mean} \PY{o}{=} \PY{p}{(}\PY{n}{Q1\PYZus{}sum} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{Q1\PYZus{}list}\PY{p}{)}\PY{p}{)}\PY{p}{)}
@@ -324,7 +324,7 @@ Create a Python list with the following values: {[}1, 2, 4, 10, 12, 117,
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-The sum of the values is 1,390.
+The sum of the values is 1390.
 
 The mean of the values is 198.57142857142858.
 
@@ -352,7 +352,7 @@ following lists of numbers:
         \PY{k}{def} \PY{n+nf}{Q2\PYZus{}a}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
             \PY{c+c1}{\PYZsh{}Compute the sum of the values.}
             \PY{n}{Q2\PYZus{}a\PYZus{}sum} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+si}{\PYZob{}0:,\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
             
             \PY{c+c1}{\PYZsh{}Compute the mean of the values.}
             \PY{n}{Q2\PYZus{}a\PYZus{}mean} \PY{o}{=} \PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}sum} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{)}\PY{p}{)}
@@ -383,7 +383,7 @@ The product of all of the the values multiplied together is 1,306,368.
         \PY{k}{def} \PY{n+nf}{Q2\PYZus{}b}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
             \PY{c+c1}{\PYZsh{}Compute the sum of the values.}
             \PY{n}{Q2\PYZus{}b\PYZus{}sum} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+si}{\PYZob{}0:,\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
             
             \PY{c+c1}{\PYZsh{}Compute the mean of the values.}
             \PY{n}{Q2\PYZus{}b\PYZus{}mean} \PY{o}{=} \PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}sum} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{)}\PY{p}{)}
@@ -400,7 +400,7 @@ The product of all of the the values multiplied together is 1,306,368.
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-The sum of the values is 1,331.
+The sum of the values is 1331.
 
 The mean of the values is 133.1.
 
