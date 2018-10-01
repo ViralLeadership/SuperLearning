@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{Week 1 HW}
+    \title{Python\_Lesson\_4\_Lecture\_wk\_4}
     
     
     
@@ -280,289 +280,1382 @@
     
 
     
-    \hypertarget{week-1-homework-introduction-to-python}{%
-\section{Week 1 Homework: Introduction to
-Python}\label{week-1-homework-introduction-to-python}}
+    \hypertarget{week-4-data-visualization-with-matplotlib}{%
+\section{Week 4: Data Visualization with
+Matplotlib}\label{week-4-data-visualization-with-matplotlib}}
 
-Create a new IPython Notebook (or copy this one), and use it to answer
-the following assignments. If you'd prefer not to use IPython, use
-another interpreter and answer the same questions.
+Welcome to the final week! In this lesson, we're going to dive into data
+visualization. Charts and graphs are a great way to communicate
+information quickly, and good visuals can sometimes carry as much weight
+as rigorous statistical analysis. Data viz isn't just eye candy -- it
+can help you pick up on patterns and structure in data that more numeric
+analysis might miss.
 
-    \hypertarget{question-1}{%
-\subsection{Question 1}\label{question-1}}
+The main Python data plotting library is Matplotlib, which has the goal
+of making ``easy things easy and hard things possible,'' as the
+\href{http://matplotlib.org/}{website says}.
 
-Create a Python list with the following values: {[}1, 2, 4, 10, 12, 117,
-1244{]}
+Matplotlib graphics are organized in Figures, with each figure
+containing one or more subplots (often confusingly refered to as axes),
+which in turn can have different things plotted in them.
 
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\item
-  Compute the sum of the values.
-\item
-  Compute the mean of the values.
-\item
-  Compute the product of all the numbers (multiply them all together).
-\end{enumerate}
+In this lesson more than in the previous ones, there will be a slight
+difference depending on whether you are using the IPython Notebook or
+not.
+
+\hypertarget{with-the-ipython-notebook}{%
+\paragraph{With the IPython Notebook}\label{with-the-ipython-notebook}}
+
+The IPython Notebook is designed to work well with Matplotlib;
+specifically, it can embed the graphics you create right in the Notebook
+itself, just like any other output.
+
+To set a Notebook to display graphics inline, run the
+
+\begin{verbatim}
+%matplotlib inline
+\end{verbatim}
+
+command in a cell before you start generating graphics.
+
+\hypertarget{without-the-ipython-notebook}{%
+\paragraph{Without the IPython
+Notebook}\label{without-the-ipython-notebook}}
+
+Displaying graphics through IDLE or the command line isn't as easy. To
+show your most recent graphics in an interactive window, run the command
+plt.show()
+
+However, once you close that window, you can't easily reopen it -- you
+have to replot the graphic in order to show it again. However, if you've
+assigned the graphic to a variable, you can still save it to a file, as
+we'll show below.
+
+If you're following these lessons outside of the IPython Notebook, the
+easiest thing to do is to run \emph{plt.show()} after every block of
+code, before where the graphic appears in this Notebook. I've tried to
+organize it so that each block only contains one graphic, so that using
+\emph{show()} will yield the same results.
+
+    \hypertarget{lets-get-started}{%
+\subsubsection{Let's get started!}\label{lets-get-started}}
+
+First, we import \textbf{matplotlib.pyplot}, the main plotting object
+within Matplotlib. By convention, and for ease of typing, pyplot is
+aliased as \textbf{plt}.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{}Create a Python list with the following values: [1, 2, 4, 10, 12, 117, 1244]}
-        \PY{n}{Q1\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{117}\PY{p}{,} \PY{l+m+mi}{1244}\PY{p}{]}
-        
-        \PY{c+c1}{\PYZsh{}Compute the sum of the values.}
-        \PY{n}{Q1\PYZus{}sum} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{Q1\PYZus{}list}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q1\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}Compute the mean of the values.}
-        \PY{n}{Q1\PYZus{}mean} \PY{o}{=} \PY{p}{(}\PY{n}{Q1\PYZus{}sum} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{Q1\PYZus{}list}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The mean of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q1\PYZus{}mean}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}Compute the product of all the numbers (multiply them all together).}
-        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
-        \PY{n}{Q1\PYZus{}product} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{prod}\PY{p}{(}\PY{n}{Q1\PYZus{}list}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The product of all of the the values multiplied together is }\PY{l+s+si}{\PYZob{}0:,\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Q1\PYZus{}product}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-The sum of the values is 1390.
-
-The mean of the values is 198.57142857142858.
-
-The product of all of the the values multiplied together is 139,726,080.
-
-
-    \end{Verbatim}
-
-    \hypertarget{question-2}{%
-\subsection{Question 2}\label{question-2}}
-
-Write functions to do all the operations above; repeat them on the
-following lists of numbers:
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\item
-  {[}3, 2, 3, 3, 3, 2, 8, 2, 2, 126{]}
-\item
-  {[}7, 267, 4, 2, 5, 319, 5, 6, 713, 3{]}
-\end{enumerate}
+    We'll also import \textbf{numpy}, the numeric computation Python
+package. Pandas uses numpy under the hood, which is why we won't
+generally work with it directly for data analysis. It has some functions
+which will be useful as inputs into our plots, though. By convention,
+numpy is imported as \textbf{np}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} Question 2 Part a}
-        \PY{k}{def} \PY{n+nf}{Q2\PYZus{}a}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
-            \PY{c+c1}{\PYZsh{}Compute the sum of the values.}
-            \PY{n}{Q2\PYZus{}a\PYZus{}sum} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{}Compute the mean of the values.}
-            \PY{n}{Q2\PYZus{}a\PYZus{}mean} \PY{o}{=} \PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}sum} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The mean of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}mean}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{}Compute the product of all the numbers (multiply them all together).}
-            \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
-            \PY{n}{Q2\PYZus{}a\PYZus{}product} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{prod}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The product of all of the the values multiplied together is }\PY{l+s+si}{\PYZob{}0:,\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}product}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-        \PY{n}{Q2\PYZus{}a\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{126}\PY{p}{]}
-        \PY{n}{Q2\PYZus{}a}\PY{p}{(}\PY{n}{Q2\PYZus{}a\PYZus{}list}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-The sum of the values is 154.
-
-The mean of the values is 15.4.
-
-The product of all of the the values multiplied together is 1,306,368.
-
-
-    \end{Verbatim}
+    If you're in the IPython Notebook, use this command to make the plots
+appear as cell outputs:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} Question 2 Part b}
-        \PY{k}{def} \PY{n+nf}{Q2\PYZus{}b}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
-            \PY{c+c1}{\PYZsh{}Compute the sum of the values.}
-            \PY{n}{Q2\PYZus{}b\PYZus{}sum} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The sum of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}sum}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{}Compute the mean of the values.}
-            \PY{n}{Q2\PYZus{}b\PYZus{}mean} \PY{o}{=} \PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}sum} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The mean of the values is }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}mean}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-            \PY{c+c1}{\PYZsh{}Compute the product of all the numbers (multiply them all together).}
-            \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
-            \PY{n}{Q2\PYZus{}b\PYZus{}product} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{prod}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The product of all of the the values multiplied together is }\PY{l+s+si}{\PYZob{}0:,\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}product}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            
-        \PY{n}{Q2\PYZus{}b\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{267}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{319}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{713}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}
-        \PY{n}{Q2\PYZus{}b}\PY{p}{(}\PY{n}{Q2\PYZus{}b\PYZus{}list}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-The sum of the values is 1331.
+    \hypertarget{our-first-plots}{%
+\subsection{Our first plots}\label{our-first-plots}}
 
-The mean of the values is 133.1.
-
-The product of all of the the values multiplied together is 1,346,037,424.
-
-
-    \end{Verbatim}
-
-    \hypertarget{question-3}{%
-\subsection{Question 3}\label{question-3}}
-
-FizzBuzz is a classic programming exercise. Iterate over the numbers
-from 0 to 99 and for each number:
+Matplotlib has multiple types of plots, but most of the time you'll use
+one of the basic types:
 
 \begin{itemize}
 \item
-  If the number is divisible by 3, print Fizz
+  Line plots: draw lines between specified points
 \item
-  If the number is divisible by 5, print Buzz
+  Scatter plots: put markers at the specified x and y coordinates
 \item
-  If the number is divisible by both 3 and 5, print Fizz Buzz
+  Bar charts: Draw bars of different height for each value or category.
 \item
-  Otherwise, just print the number.
+  Histograms: use bars to represent the distribution of the data
 \end{itemize}
 
-\textbf{Hint:} The modulo operator which gives you a division remainder
-is the percentage sign, \%. For example:
+First, we'll create some sample data and then plot it. For the x values,
+we'll simply take the integers from 0 to 99. For the y values, we'll
+create one random value for each x. Note that numpy has its own random
+number generators, in its \textbf{.random} module:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{for} \PY{n}{number} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{:}
-            \PY{k}{if} \PY{n}{number} \PY{o}{\PYZpc{}} \PY{l+m+mi}{3} \PY{o}{==} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{number} \PY{o}{\PYZpc{}} \PY{l+m+mi}{5} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fizz Buzz}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            \PY{k}{elif} \PY{n}{number} \PY{o}{\PYZpc{}} \PY{l+m+mi}{3} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fizz}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            \PY{k}{elif} \PY{n}{number} \PY{o}{\PYZpc{}} \PY{l+m+mi}{5} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Buzz}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            \PY{k}{else}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{n}{number}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} Prepare some data:}
+        \PY{n}{x\PYZus{}data} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+        \PY{n}{y\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-1
-2
-Fizz
-4
-Buzz
-Fizz
-7
-8
-Fizz
-Buzz
-11
-Fizz
-13
-14
-Fizz Buzz
-16
-17
-Fizz
-19
-Buzz
-Fizz
-22
-23
-Fizz
-Buzz
-26
-Fizz
-28
-29
-Fizz Buzz
-31
-32
-Fizz
-34
-Buzz
-Fizz
-37
-38
-Fizz
-Buzz
-41
-Fizz
-43
-44
-Fizz Buzz
-46
-47
-Fizz
-49
-Buzz
-Fizz
-52
-53
-Fizz
-Buzz
-56
-Fizz
-58
-59
-Fizz Buzz
-61
-62
-Fizz
-64
-Buzz
-Fizz
-67
-68
-Fizz
-Buzz
-71
-Fizz
-73
-74
-Fizz Buzz
-76
-77
-Fizz
-79
-Buzz
-Fizz
-82
-83
-Fizz
-Buzz
-86
-Fizz
-88
-89
-Fizz Buzz
-91
-92
-Fizz
-94
-Buzz
-Fizz
-97
-98
-Fizz
-
-    \end{Verbatim}
+    Now to plot the data! Remember that if you're not using IPython in
+inline mode, add \textbf{plt.show()} after each plotting command.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{l+m+mi}{4} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} A line plot:}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:} 0
+{\color{outcolor}Out[{\color{outcolor}5}]:} [<matplotlib.lines.Line2D at 0x1088b7d30>]
 \end{Verbatim}
             
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{l+m+mi}{5} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} A scatter plot:}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}6}]:} 1
+{\color{outcolor}Out[{\color{outcolor}6}]:} <matplotlib.collections.PathCollection at 0x108bbe978>
 \end{Verbatim}
             
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} A bar chart:}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} <Container object of 100 artists>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} A histogram}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} (array([  6.,  11.,  11.,  10.,  13.,  13.,   7.,   8.,  10.,  11.]),
+         array([ 0.01953873,  0.11704176,  0.21454479,  0.31204782,  0.40955085,
+                 0.50705388,  0.60455691,  0.70205995,  0.79956298,  0.89706601,
+                 0.99456904]),
+         <a list of 10 Patch objects>)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_13_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    All of these follow the same basic form: the type of chart is determined
+by the function you call; the first argument is a list of x values, and
+the second argument (for everything but a histogram) is the y values.
+Matplotlib creates a figure with a default size, and chooses axis ranges
+to display. Blue is the default color.
+
+For some simple exploratory visualization, this may be all you need! But
+to make better-quality graphics, you can customize all of the above, and
+more.
+
+    \hypertarget{figures-and-subplots}{%
+\subsection{Figures and subplots:}\label{figures-and-subplots}}
+
+The root object for all Matplotlib graphics is the Figure. Each figure
+contains one or more subplots (also sometimes called axes) which contain
+the actual graphics. Using figures and subplots allows you to hold
+multiple graphics in memory at the same time and to access or modify
+their properties.
+
+Let's replicate the basic line chart using figures and subplots:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} First we generate some new random data:}
+        \PY{n}{x\PYZus{}data} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+        \PY{n}{y\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{} Create the new figure}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)} \PY{c+c1}{\PYZsh{} Create a single subplot within the figure}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)} \PY{c+c1}{\PYZsh{} Plot the data in the subplot}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} [<matplotlib.lines.Line2D at 0x109026eb8>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_17_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The \emph{plt.figure()} function creates a new figure, which we assign
+to \emph{fig}. Next, the figure's \emph{add\_subplot(\ldots{})} method
+creates a new subplot within that figure, which is assigned to the
+variable \emph{ax}.
+
+The number in \emph{.add\_subplot(\ldots{})} can be kind of confusing.
+Its purpose is to tell Matplotlib how to divide a figure into subplots:
+the first (hundreds) digit is the number of rows of subplots to have,
+the second digit is the number of columns of subplots, and the third
+digit is the index of the specific subplot to plot in, counting first
+across and then down. We'll cover subplots in more detail later on; for
+now, if you want your figure to have only one subplot, remember `111' --
+it means that the figure will have only one row and one column of
+subplots, and hence only one single subplot. (Unlike most everything in
+Python, subplots are counted from 1, not 0).
+
+You can set figure-wide properties when you create the figures. The one
+you'll probably use most often is \emph{figsize}, which sets the size of
+the figure, in inches. The size in pixels will depend on DPI (dots per
+inch) which defaults to 80. If you're using the IPython Notebook, that
+will determine the size and shape of the image that's created. If you're
+using \emph{.show()}, you'll notice that you can resize the image
+dynamically. However, that won't change the underlying object.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{} Set the figure size to be 10 inches }
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} [<matplotlib.lines.Line2D at 0x1090fee80>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_19_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    No matter whether you're using the Notebook or another Python
+interpreter, you can export the image using its
+\emph{.savefig(\ldots{})} method. The main argument you provide is the
+file name or path. If it's just the file name, it will save in the same
+directory as the notebook. Alternatively, you can provide a full path to
+wherever on your system you want to save it.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{fig}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Test\PYZus{}small.png}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    By default, Matplotlib saves graphics at a DPI (dots per inch) of 80.
+You can specify a higher DPI, which will result in a higher-resolution
+file.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{fig}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Test\PYZus{}large.png}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{300}\PY{p}{)}
+\end{Verbatim}
+
+
+    Matplotlib automatically saves the file in the correct format based on
+the extension you give the file name, for a wide variety of formats. For
+example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{fig}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Test.pdf}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} Standard PDF}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{fig}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Test.svg}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} Vector image}
+\end{Verbatim}
+
+
+    \hypertarget{manipulating-figures-and-axes}{%
+\subsubsection{Manipulating figures and
+axes:}\label{manipulating-figures-and-axes}}
+
+Besides being able to save your graphics, the main reason to use
+explicit figures and subplots is to be able to manipulate and add labels
+to the axis lines of your plots.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} Some more random data}
+         \PY{n}{x\PYZus{}data} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{21}\PY{p}{)}
+         \PY{n}{y\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]} \PY{c+c1}{\PYZsh{} Now we pick a random integer between 0 and 10.}
+\end{Verbatim}
+
+
+    Most methods to manipulate subplots usually take the form of
+\emph{.set\_} + whatever property it is you want to add. Three you'll
+probably use most often are:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{.set\_title(\ldots{})} -- Give the subplot a heading
+\item
+  \emph{.set\_xlabel(\ldots{})} -- Give a label to the X axis
+\item
+  \emph{.set\_ylabel(\ldots{})} -- Give a label to the Y axis
+\end{itemize}
+
+For example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Some random numbers}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{X Axis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Y Axis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} [<matplotlib.lines.Line2D at 0x10b988358>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_30_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    If you're not satisfied with the default axis ranges generated for your
+plot, you can set them yourself using the \emph{.set\_xlim(\ldots{})}
+and \emph{.set\_ylim(\ldots{})}, passing your own start and stop points:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Some random numbers}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{X Axis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Y Axis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} (-1, 10)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_32_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Some random numbers}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{X Axis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Y Axis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y\PYZus{}data}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} (5, 10)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_33_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{styling-plots}{%
+\subsubsection{Styling plots}\label{styling-plots}}
+
+The colors and formatting of lines, points etc. can also be changed.
+This gets especially important when you're trying to ploot several lines
+on the same chart, or convey some other information using color and
+shape. The right design can help you tell a story with your
+visualization, and make it immediately clear what data each line or
+marker is associated with.
+
+Matplotlib doesn't limit you to plotting only one data series on each
+subplot. In these examples, we'll generate two sets of data, plot them
+both, and style them differently.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} Some new data, one x axis with two sets of y points:}
+         \PY{n}{x\PYZus{}data} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{y1\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]}
+         \PY{n}{y2\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]}
+\end{Verbatim}
+
+
+    Matplotlib will apply some default styling when you make several plots
+within the same subplot:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} [<matplotlib.lines.Line2D at 0x10bc406d8>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_37_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    To set the color of lines directly, you assign a color to the plot
+function's \emph{c} (for color) argument. Matplotlib has single-letter
+abbreviations for commonly-used colors. For example, `b' is Blue, `r' is
+Red, `g' is Green, and `k' is blacK. For the full list, see:
+
+http://matplotlib.org/api/colors\_api.html\#module-matplotlib.colors
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} Black}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} Red}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} [<matplotlib.lines.Line2D at 0x10bd1bfd0>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_39_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    There are other line properties we can set. \emph{linewidth} is the
+width of the line, just as you expect (the default width is 1).
+\emph{linestyle} is how to draw the line, other than as a solid line.
+Each possible linestyle is associated with a set of characters that are
+meant to resemble the actual pattern. For example, the symbol for a
+dashed line is `--'. For the full list, see:
+http://matplotlib.org/api/artist\_api.html\#module-matplotlib.lines
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.0}\PY{p}{)} \PY{c+c1}{\PYZsh{} Black}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} Red}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} [<matplotlib.lines.Line2D at 0x10bd858d0>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_41_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Not only can we overlay different lines, we can even overlay different
+kinds of plots -- such as line plots and scatter plots.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} 
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} 
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} <matplotlib.collections.PathCollection at 0x10c010710>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_43_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Notice that the axis ranges have changed, since Matplotlib puts more
+space around scatterplots than line plots.
+
+If we want to turn on grid lines, we pass True to the subplot's
+\emph{grid} method:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} 
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_45_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Another way to create a scatterplot is to pass an extra argument to the
+\emph{plot(\ldots{})} method, right after the data. This argument is a
+character representing the shape to use as the scatter plot marker. For
+example, `+' marks each datapoint with a small cross.
+
+Let's try that out, and demonstrate that we can even combine a
+scatterplot with a histogram (though I'm not sure if you would ever
+actually need to):
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{+}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{c+c1}{\PYZsh{} Plot using red \PYZsq{}+\PYZsq{} signs.}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y1\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:} (array([ 1.,  1.,  5.,  1.,  1.,  1.,  4.,  1.,  2.,  3.]),
+          array([ 0. ,  0.9,  1.8,  2.7,  3.6,  4.5,  5.4,  6.3,  7.2,  8.1,  9. ]),
+          <a list of 10 Patch objects>)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_47_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Another property scatterplots can have is \emph{s}, the size of the
+points. If we pass a number, all the points will be scaled equally:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{32}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} <matplotlib.collections.PathCollection at 0x10c3d79e8>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_49_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    If you pass a list of numbers, each point will be scaled based on the
+corresponding item in the list. This lets you add another dimension to
+your visualization.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{n}{y2\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} <matplotlib.collections.PathCollection at 0x10c5c16a0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_51_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    However, We may need to scale that dimension somehow, to make it a
+better size value. The points above are rather small, so let's try
+multiplying each by 16 to get the size:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{16} \PY{o}{*} \PY{n}{y} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{y2\PYZus{}data}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} <matplotlib.collections.PathCollection at 0x10c04aef0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_53_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Color works the same way, though of course we need to convert data to a
+color somehow. This can be useful for categorical data. For this
+example, let's plot points with y2 below 5 in red, and points above 5 in
+green. Let's also remove the outline line, to make the color stand out
+more.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} Map numbers to colors:}
+         \PY{n}{colors} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{y2\PYZus{}data}\PY{p}{:}
+             \PY{k}{if} \PY{n}{y} \PY{o}{\PYZlt{}} \PY{l+m+mi}{5}\PY{p}{:} \PY{n}{colors}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{k}{else}\PY{p}{:} \PY{n}{colors}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{32}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{colors}\PY{p}{,} \PY{n}{linewidths}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+                 
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} <matplotlib.collections.PathCollection at 0x10bab4860>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_55_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{legends}{%
+\subsection{Legends}\label{legends}}
+
+It's important to be able to label your data and make sure that your
+audience (and you!) know what each part of a chart means. In this
+section, we'll go over adding legends to your charts.
+
+Let's create another round of random data
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} Some more new data}
+         \PY{n}{x\PYZus{}data} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{y1\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]}
+         \PY{n}{y2\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{x\PYZus{}data}\PY{p}{]}
+\end{Verbatim}
+
+
+    For quick and dirty plotting, we don't need to explicitly create a
+figure and subplot:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Line 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Line 2}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}32}]:} <matplotlib.legend.Legend at 0x10ba884e0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_59_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The \emph{.legend(\ldots{})} method can take as an argument a list of
+strings to label the lines with, in the order they were plotted.
+
+It works the same when we do use figures and subplots:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.0}\PY{p}{)} 
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Black line}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dashed red line}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:} <matplotlib.legend.Legend at 0x10c6aa6a0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_61_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Note that the legend automatically uses the line design we specified in
+the plot.
+
+What if we want to locate the legend somewhere else? We can use the
+\emph{loc} argument, which can take either a string or a number to
+specify which preset location to put the legend in. The full list of
+options is available in the documentation here:
+
+http://matplotlib.org/users/legend\_guide.html\#legend-location
+
+But for example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.0}\PY{p}{)} 
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Black line}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dashed red line}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lower right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}34}]:} <matplotlib.legend.Legend at 0x10c8829b0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_63_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can also get finer control over the legend location by passing it a
+tuple of (x, y) coordinates for the legend location, where the
+coordinates are a fraction of the figure size. If we provide a value
+greater than 1, we can actually place the legend outside the boundaries
+of the subplot, like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.0}\PY{p}{)} 
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Black line}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dashed red line}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{1.05}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}35}]:} <matplotlib.legend.Legend at 0x10c96acf8>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_65_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{scatter-plot-legends}{%
+\paragraph{Scatter Plot Legends}\label{scatter-plot-legends}}
+
+Of course, we can also create a legend for scatter plots:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{16} \PY{o}{*} \PY{n}{y} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{y2\PYZus{}data}\PY{p}{]}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Points}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}36}]:} <matplotlib.legend.Legend at 0x10ca77ac8>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_67_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    However, this isn't very useful; in this case, it would be much more
+useful to give a few reference sizes, along with the values they
+represent.
+
+Unfortunately, Matplotlib can't set that up automatically. We have to
+build the legend by hand, using what's called proxy artists. What that
+means is that we'll create a few invisible points with set sizes, and
+build the legend using those. It looks like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{16} \PY{o}{*} \PY{n}{y} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{y2\PYZus{}data}\PY{p}{]}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)} \PY{c+c1}{\PYZsh{} Keep the axis from being resized when we add some new points}
+         
+         \PY{c+c1}{\PYZsh{} Creating proxy artists}
+         \PY{n}{p1} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+         \PY{n}{p2} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{16}\PY{o}{*}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{p3} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{16}\PY{o}{*}\PY{l+m+mi}{10}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Plotting the legend}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{n}{p1}\PY{p}{,} \PY{n}{p2}\PY{p}{,} \PY{n}{p3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{10}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{scatterpoints}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{1.01}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}37}]:} <matplotlib.legend.Legend at 0x10cb59eb8>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_69_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Look at the code above. The first thing we do is freeze the axis, so
+that we can add points that aren't part of the data and won't appear;
+we're plotting them `off-screen'.
+
+Next, we plot some single points with the property we want -- in this
+case, we're setting their size, on the same scale as the points we
+actually care about. All we care about are these points \emph{handles},
+the variable we assign their plot to.
+
+Finally, we create the legend. Before passing the labels, however, we
+pass the handlers created before. This tells the legend to only include
+the specified objects. We then associate each object with the label we
+want it to have in the legend.
+
+The last new argument here is \emph{scatterpoints=}. Look at the initial
+scatterplot legend we made, above -- see how it includes several dots?
+By default, Matplotlib puts a few dots together in the scatterplot
+legend, but we want only one dot per item.
+
+    \hypertarget{histograms-and-binning}{%
+\subsubsection{Histograms and binning}\label{histograms-and-binning}}
+
+Histograms can be an especially useful tool for showing the distribution
+of your data, but they must also be used with caution. In this next
+example, we'll show why.
+
+(Note: example data taken from:
+http://stats.stackexchange.com/questions/51718/assessing-approximate-distribution-of-data-based-on-a-histogram/51753\#51753)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{data} \PY{o}{=} \PY{p}{[}\PY{l+m+mf}{2.4}\PY{p}{,} \PY{l+m+mf}{4.71}\PY{p}{,} \PY{l+m+mf}{2.53}\PY{p}{,} \PY{l+m+mf}{3.45}\PY{p}{,} \PY{l+m+mf}{1.23}\PY{p}{,} \PY{l+m+mf}{1.53}\PY{p}{,} \PY{l+m+mf}{2.37}\PY{p}{,} \PY{l+m+mf}{3.35}\PY{p}{,} \PY{l+m+mf}{2.67}\PY{p}{,} \PY{l+m+mf}{3.16}\PY{p}{,} 
+         \PY{l+m+mf}{1.31}\PY{p}{,} \PY{l+m+mf}{4.78}\PY{p}{,} \PY{l+m+mf}{4.44}\PY{p}{,} \PY{l+m+mf}{1.64}\PY{p}{,} \PY{l+m+mf}{1.13}\PY{p}{,} \PY{l+m+mf}{2.68}\PY{p}{,} \PY{l+m+mf}{4.76}\PY{p}{,} \PY{l+m+mf}{1.79}\PY{p}{,} \PY{l+m+mf}{2.89}\PY{p}{,} \PY{l+m+mf}{3.58}\PY{p}{,} \PY{l+m+mf}{4.1}\PY{p}{,} 
+         \PY{l+m+mf}{4.81}\PY{p}{,} \PY{l+m+mf}{1.14}\PY{p}{,} \PY{l+m+mf}{4.09}\PY{p}{,} \PY{l+m+mf}{4.99}\PY{p}{,} \PY{l+m+mf}{2.47}\PY{p}{,} \PY{l+m+mf}{4.77}\PY{p}{,} \PY{l+m+mf}{1.09}\PY{p}{,} \PY{l+m+mf}{3.56}\PY{p}{,} \PY{l+m+mf}{1.26}\PY{p}{,} \PY{l+m+mf}{3.26}\PY{p}{,} \PY{l+m+mf}{4.56}\PY{p}{,} 
+         \PY{l+m+mf}{1.81}\PY{p}{,} \PY{l+m+mf}{4.36}\PY{p}{,} \PY{l+m+mf}{1.83}\PY{p}{,} \PY{l+m+mf}{3.68}\PY{p}{,} \PY{l+m+mf}{4.21}\PY{p}{,} \PY{l+m+mf}{1.15}\PY{p}{,} \PY{l+m+mf}{4.85}\PY{p}{,} \PY{l+m+mf}{1.17}\PY{p}{]}
+\end{Verbatim}
+
+
+    When we create a histogram, Matplotlib will choose bins by default.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{hist} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_74_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    To set bins ourselves, we assign a list of values to the \emph{bins}
+property. The numbers indicate the start- and end-points for the bins,
+so each bin will be between two list items.
+
+By default, the histogram will give us counts -- the number of items in
+each bin. We can change to relative frequency (the fraction of items in
+each bin) by setting \emph{normed=True}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{hist} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{n}{normed}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_76_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    What if we want non-integer bins. We can create those lists by hand, but
+that's cumbersome. We can hack something together using a range of
+integers and then dividing them, but that again is cumbersome.
+
+A better solution comes from numpy, the numerical computation and linear
+algebra library. The numpy method \emph{linspace(\ldots{})} creates a
+numpy array (for our purposes, essentially a special kind of list)
+dividing the interval between two points into a set number of values.
+For example, if we want to divide our data into bins 0.5 wide, we need
+to divide the range {[}1.5, 5{]} like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{1.5}\PY{p}{,} \PY{l+m+mf}{5.0}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}41}]:} array([ 1.5,  2. ,  2.5,  3. ,  3.5,  4. ,  4.5,  5. ])
+\end{Verbatim}
+            
+    Note that linspace returns both end-points!
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{hist} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{1.5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{normed}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_80_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Now what if we divide the range differently? (and change the color,
+while we're at it)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{hist} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{5.0}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_82_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Notice how this plot makes the data seem differently distributed than
+the ones above?
+
+Let's try yet another set of break points. We'll also tweak the width of
+the bars, using the \emph{rwidth} property, which determines the
+fraction of the bin width to fill with a bar (1 is 100\%).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{hist} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{rwidth}\PY{o}{=}\PY{l+m+mf}{0.8}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{15}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}44}]:} (0, 15)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_84_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{multiple-subplots}{%
+\subsection{Multiple subplots}\label{multiple-subplots}}
+
+So far, each figure has contained only one subplot. Of course, the whole
+point of subplots is that you can have several of them in a single
+figure. In this section, we'll go over how.
+
+First, let's create two more series to plot; let's hav the first just be
+random numbers, and the second be the different between those numbers:
+so that y2\_data{[}i{]} = y1\_data{[}i{]} = y1\_data{[}i-1{]}. y2 will
+be positive when y1 increases, and negative when it decreases. To keep
+the series aligned, if y1 counts from 0, y2 should count from 1.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{x1\PYZus{}data} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+         \PY{n}{y1\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{]}
+         
+         \PY{n}{x2\PYZus{}data} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+         \PY{n}{y2\PYZus{}data} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{y1\PYZus{}data}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{y1\PYZus{}data}\PY{p}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    Now we create two subplots side by side, and plot one series in each:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{c+c1}{\PYZsh{} Create one figure:}
+         \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{121}\PY{p}{)} \PY{c+c1}{\PYZsh{} Create the first subplot}
+         \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x1\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)} \PY{c+c1}{\PYZsh{} and plot the data in it}
+         
+         \PY{n}{ax2} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{122}\PY{p}{)} \PY{c+c1}{\PYZsh{} Now create the second subplot}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x2\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)} \PY{c+c1}{\PYZsh{} and plot the data there too.}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}46}]:} [<matplotlib.lines.Line2D at 0x10ce62518>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_88_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Look at the two \emph{.subplot(\ldots{})} commands. The first two digits
+stay the same and the last one changes, indicating which of the two
+subplots we want to use.
+
+We can use the same format to draw the plots one on top of the other
+instead of side by side:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}
+         \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x1\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)}
+         
+         \PY{n}{ax2} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{212}\PY{p}{)}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x2\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)} \PY{c+c1}{\PYZsh{} Keep them aligned}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}47}]:} (0, 9)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_90_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    In both of these examples, the overall figure size has stayed the same;
+it is simply divided differently.
+
+Of course, we're not restricted to two subplots:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}
+         \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x1\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)}
+         
+         \PY{n}{ax2} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{222}\PY{p}{)}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y1\PYZus{}data}\PY{p}{)}
+         
+         \PY{n}{ax3} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}
+         \PY{n}{ax3}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x2\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)}
+         \PY{n}{ax3}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}
+         
+         \PY{n}{ax4} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}
+         \PY{n}{ax4}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}48}]:} (array([ 1.,  2.,  0.,  1.,  0.,  0.,  0.,  4.,  0.,  1.]),
+          array([-0.53218579, -0.438744  , -0.34530222, -0.25186043, -0.15841864,
+                 -0.06497686,  0.02846493,  0.12190672,  0.2153485 ,  0.30879029,
+                  0.40223208]),
+          <a list of 10 Patch objects>)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_92_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Just because we've divided the figure into a set number of subplots
+doesn't mean we need to draw something in \emph{all} of them:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{221}\PY{p}{)}
+         \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x1\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Just removing subplot 2}
+         
+         \PY{n}{ax3} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{223}\PY{p}{)}
+         \PY{n}{ax3}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x2\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)}
+         \PY{n}{ax3}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}
+         
+         \PY{n}{ax4} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{224}\PY{p}{)}
+         \PY{n}{ax4}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{y2\PYZus{}data}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}49}]:} (array([ 1.,  2.,  0.,  1.,  0.,  0.,  0.,  4.,  0.,  1.]),
+          array([-0.53218579, -0.438744  , -0.34530222, -0.25186043, -0.15841864,
+                 -0.06497686,  0.02846493,  0.12190672,  0.2153485 ,  0.30879029,
+                  0.40223208]),
+          <a list of 10 Patch objects>)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_94_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    To develop your intuition (and just for fun), here's what happens if we
+\emph{don't} keep the first two digits consistent:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{121}\PY{p}{)}
+         \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x1\PYZus{}data}\PY{p}{,} \PY{n}{y1\PYZus{}data}\PY{p}{)}
+         
+         \PY{n}{ax2} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{212}\PY{p}{)}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x2\PYZus{}data}\PY{p}{,} \PY{n}{y2\PYZus{}data}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}50}]:} [<matplotlib.lines.Line2D at 0x10cd76fd0>]
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_96_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    You might also wonder what happens if you have more than 9 rows, columns
+or subplots. In those cases, you can simply use commas between the
+numbers instead of just a single number. To demonstrate, here are 5x5
+empty subplots:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+             \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{n}{counter}\PY{p}{)}
+                 \PY{n}{counter} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_98_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{plotting-pandas-data}{%
+\subsection{Plotting pandas data}\label{plotting-pandas-data}}
+
+Last week we learned about Pandas, and how to use it to work with data.
+We briefly saw that it can integrate with Matplotlib. Now we'll take a
+closer look at that:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{k+kn}{import} \PY{n+nn}{pandas}
+\end{Verbatim}
+
+
+    Let's work with a new dataset this time -- two time series from the US
+Federal Reserve, showing daily benchmark gold and oil prices.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{data} \PY{o}{=} \PY{n}{pandas}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GoldAndOil.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{parse\PYZus{}dates}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{c+c1}{\PYZsh{} Load the data}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}54}]:}         DATE   GOLD    OIL
+         0 1986-01-02  327.1  25.56
+         1 1986-01-03  326.0  26.00
+         2 1986-01-06  327.8  26.53
+         3 1986-01-07  328.9  25.85
+         4 1986-01-08  330.9  25.87
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{data}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} Set the DATE column as the index:}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}56}]:}              GOLD    OIL
+         DATE                    
+         1986-01-02  327.1  25.56
+         1986-01-03  326.0  26.00
+         1986-01-06  327.8  26.53
+         1986-01-07  328.9  25.85
+         1986-01-08  330.9  25.87
+\end{Verbatim}
+            
+    The simplest thing we can do is to simply call the DataFrame's
+\emph{plot()} method. This will automatically generate a plot of all the
+numeric columns in your dataset, with the index as the x axis. Pandas
+will even add a legend with the column names, and try to optimally
+position it.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{data}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}57}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x10f8a5358>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_107_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Of course, this also works when we create subsets of the original data;
+note that the axes adjust accordingly.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{n}{data\PYZus{}recent} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{n}{data}\PY{o}{.}\PY{n}{index} \PY{o}{\PYZgt{}} \PY{n}{pandas}\PY{o}{.}\PY{n}{datetime}\PY{p}{(}\PY{n}{year}\PY{o}{=}\PY{l+m+mi}{2006}\PY{p}{,} \PY{n}{month}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{day}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}59}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x10f8fde48>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_110_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can also pass Pandas series directly to Matplotlib. This is useful
+when Pandas can't easily plot what we want by default. Below, I create a
+scatter-plot with the price of oil on the X axis and the price of gold
+on the y axis.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{OIL}\PY{p}{,} \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{GOLD}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}60}]:} <matplotlib.collections.PathCollection at 0x10f8ff780>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_112_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    If we want to customize our plot, we first create a subplot as usual,
+then pass it to the DataFrame's \emph{plot(\ldots{})} method's \emph{ax}
+argument, like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{USD}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}61}]:} <matplotlib.text.Text at 0x10fa824e0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_114_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can also create multiple subplots and plot columns or series
+separately; potentially useful in a case like this, where our two series
+have very different y values.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{211}\PY{p}{)}
+         \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Oil}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{OIL}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{ax1}\PY{p}{)}
+         
+         \PY{n}{ax2} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{212}\PY{p}{)}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gold}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{GOLD}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{ax2}\PY{p}{)}
+         
+         \PY{n}{fig}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{} Adjust the layout to prevent overlaps}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_116_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Another option for displaying data on different scales is using a
+secondary y axis. We do this by simply adding the
+\emph{secondary\_y=True} argument to the plot we want to put on a
+secondary axis. Note that the pandas plot method returns a subplot
+object; when we create a secondary axis, the result is a subplot that is
+`overlayed' on the previous subplot, but has a y axis which can be
+labeled (and resized) independently.
+
+Let's plot the prices of gold and oil on two different y axes, and give
+them appropriate colors. Notice that in addition to the one-letter color
+codes, Matplotlib can accept colors in HTML-style hex notation, preceded
+by a `\#' sign.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gold (USD)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{GOLD}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}EDDA74}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{ax2} \PY{o}{=} \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{OIL}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{,} \PY{n}{secondary\PYZus{}y}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{c+c1}{\PYZsh{} Create the secondary y axis}
+         \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Oil (USD)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}63}]:} <matplotlib.text.Text at 0x1109d2e80>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_118_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can also do something similar more directly by plotting the entire
+dataframe, and passing a list of column names to plot on the secondary
+axis to the \emph{secondary\_y} argument, like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{111}\PY{p}{)}
+         
+         \PY{n}{data\PYZus{}recent}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{,} \PY{n}{secondary\PYZus{}y}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{OIL}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}EDDA74}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}64}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11098fc18>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_120_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{and-thats-it-youve-made-it.-congratulations-and-thank-you-for-joining-me-and-the-other-students-in-the-course}{%
+\paragraph{And that's it! You've made it. Congratulations, and thank you
+for joining me and the other students in the
+course!}\label{and-thats-it-youve-made-it.-congratulations-and-thank-you-for-joining-me-and-the-other-students-in-the-course}}
+
 
     % Add a bibliography block to the postdoc
     
