@@ -25,4 +25,12 @@ show(elapsedTime - elapsedTime2)
 show(elapsedTime - elapsedTime3)
 show(elapsedTime2 - elapsedTime3)
 
-source('DBDA2E-utilities.R')
+source('DBDA2Eprograms/DBDA2E-utilities.R')
+openGraph( width=3, height=4 )
+plot( x=1:4, y=c(1,3,2,4), type='o' )
+saveGraph( file='temp', type='pdf' )
+
+remove.packages('rstan')
+if ( file.exists(.RData)) {
+  file.remove('RData')
+}

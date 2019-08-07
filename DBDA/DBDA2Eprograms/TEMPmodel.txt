@@ -1,0 +1,23 @@
+
+model {
+  for ( s in 1:nS ) {
+    zC[s] ~ dbin( thetaC[s] , nC[s] )
+    zT[s] ~ dbin( thetaT[s] , nT[s] )
+    thetaC[s] ~ dbeta( moC*(kappaC-2)+1 , (1-moC)*(kappaC-2)+1 )
+    thetaT[s] <- thetaC[s] * multT[s]
+    multT[s] ~ dgamma( multTSh , multTRa )
+  }
+  multTSh <- 1 + multTMo * multTRa
+  multTRa <- ( ( multTMo + sqrt( multTMo^2 + 4*multTSD^2 ) ) 
+                / ( 2*multTSD^2 ) )
+  multTMo ~ dgamma( 2.618 , 1.618 )  # mode=1 , sd=1
+  multTSD ~ dgamma( 1.925 , 4.625 )  # mode=0.2 , sd=0.3
+  # multTMo ~ dgamma( 1.925 ,  0.925 )  # mode=1 , sd=1.5
+  # multTMo ~ dgamma( 1.640 ,  0.640 )  # mode=1 , sd=2
+  # multTSD ~ dgamma( 2.618 , 16.180 )  # mode=0.1 , sd=0.1
+  # multTSD ~ dgamma( 2.618 ,  8.090 )  # mode=0.2 , sd=0.2
+  moC ~ dbeta(1,1)
+  kappaC <- kappaCMinusTwo + 2
+  kappaCMinusTwo ~ dgamma( 0.01 , 0.01 )  # mean=1 , sd=10 (generic vague)
+}
+
